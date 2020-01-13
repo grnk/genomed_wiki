@@ -21,7 +21,6 @@ class m200111_105821_create_article_table extends Migration
             'id' => $this->primaryKey(),
             'title' => $this->string()->comment('Название статьи')->notNull(),
             'date' => $this->dateTime()->comment('Выводимое время'),
-            'order' => $this->integer()->comment('Сортировка'),
             'content' => 'LONGTEXT',
             'status' => $this->smallInteger()->comment('Статус активности')->notNull()->defaultValue(1),
             'meta_description' => $this->string()->comment('Мета описание')->defaultValue(null),
@@ -32,11 +31,6 @@ class m200111_105821_create_article_table extends Migration
             'updated_at' => $this->dateTime()->notNull(),
             'slug' => $this->string()->comment('Уникальное название статьи')->notNull()->unique(),
         ], $tableOptions);
-        $this->createIndex(
-            'order_article',
-            'article',
-            'order'
-        );
         $this->createIndex(
             'status_article',
             'article',

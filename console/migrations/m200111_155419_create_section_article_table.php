@@ -21,6 +21,7 @@ class m200111_155419_create_section_article_table extends Migration
             'id' => $this->primaryKey(),
             'section_id' => $this->integer()->comment('id раздела')->defaultValue(null),
             'article_id' => $this->integer()->comment('id статьи')->defaultValue(null),
+            'order' => $this->integer()->comment('Сортировка статей'),
             'created_at' => $this->dateTime()->notNull(),
             'updated_at' => $this->dateTime()->notNull(),
         ], $tableOptions);
@@ -41,6 +42,16 @@ class m200111_155419_create_section_article_table extends Migration
             'id',
             'CASCADE',
             'CASCADE'
+        );
+        $this->createIndex(
+            'section_article',
+            'section_article',
+            'section_id, article_id'
+        );
+        $this->createIndex(
+            'order',
+            'section_article',
+            'order'
         );
     }
 
