@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use \common\models\base\Section as BaseSection;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "section".
@@ -39,5 +40,22 @@ class Section extends BaseSection
             'meta_keywords' => Yii::t('app', 'Мета ключевые слова'),
             'slug' => Yii::t('app', 'Уникальное название раздела'),
         ];
+    }
+
+    public function getUrl()
+    {
+//        return Url::to(['']);
+        return 'section_id-' .  $this->id;
+    }
+
+    public static function getItemsSectionForLeftMenu()
+    {
+        $items = [];
+        $sections = Section::find()->orderBy('order')->all();
+        foreach ($sections as $section) {
+            $items[] = ['label' => $section->title, 'url' => $section->getUrl()];
+        }
+
+        return $items;
     }
 }
