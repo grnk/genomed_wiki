@@ -43,9 +43,9 @@ class ArticleController extends Controller
      * Lists all Article models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($sectionId)
     {
-        $searchModel = new ArticleSearch();
+        $searchModel = new ArticleSearch(['sectionId' => $sectionId]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

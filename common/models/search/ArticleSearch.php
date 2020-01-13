@@ -2,6 +2,7 @@
 
 namespace common\models\search;
 
+use common\models\Section;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -12,6 +13,7 @@ use common\models\Article;
  */
  class ArticleSearch extends Article
 {
+    public $sectionId;
     /**
      * @inheritdoc
      */
@@ -41,7 +43,10 @@ use common\models\Article;
      */
     public function search($params)
     {
-        $query = Article::find();
+
+        $section = Section::find()->andWhere(['id' => $this->sectionId])->one();
+//        $query = Article::find();
+        $query = $section->getArticles();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

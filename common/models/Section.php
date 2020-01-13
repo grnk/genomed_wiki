@@ -44,8 +44,7 @@ class Section extends BaseSection
 
     public function getUrl()
     {
-//        return Url::to(['']);
-        return 'section_id-' .  $this->id;
+        return Url::to(['article/index', 'sectionId' => $this->id]);
     }
 
     public static function getItemsSectionForLeftMenu()
@@ -58,4 +57,6 @@ class Section extends BaseSection
 
         return $items;
     }
+
+
 }

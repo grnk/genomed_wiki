@@ -93,6 +93,15 @@ class Section extends ActiveRecord
     {
         return $this->hasMany(\common\models\SectionArticle::className(), ['section_id' => 'id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArticles()
+    {
+        return $this->hasMany(\common\models\Article::class, ['id' => 'article_id'])
+            ->viaTable('section_article', ['section_id' => 'id']);
+    }
     
     /**
      * @inheritdoc
