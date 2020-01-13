@@ -22,7 +22,7 @@ class m200111_105821_create_article_table extends Migration
             'title' => $this->string()->comment('Название статьи')->notNull(),
             'date' => $this->dateTime()->comment('Выводимое время'),
             'order' => $this->integer()->comment('Сортировка'),
-            'content' => $this->text()->comment('Контент статьи'),
+            'content' => 'LONGTEXT',
             'status' => $this->smallInteger()->comment('Статус активности')->notNull()->defaultValue(1),
             'meta_description' => $this->string()->comment('Мета описание')->defaultValue(null),
             'meta_keywords' => $this->string()->comment('Мета ключевые слова')->defaultValue(null),
