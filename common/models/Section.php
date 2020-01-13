@@ -16,13 +16,11 @@ class Section extends BaseSection
     public function rules()
     {
         return [
-            [['title', 'created_at', 'updated_at', 'slug'], 'required'],
+            [['title', 'slug'], 'required'],
             [['order', 'parent_id', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'meta_description', 'meta_keywords', 'slug'], 'string', 'max' => 255],
             [['slug'], 'unique'],
-            [['lock'], 'default', 'value' => '0'],
-            [['lock'], 'mootensai\components\OptimisticLockValidator']
         ];
     }
 	
