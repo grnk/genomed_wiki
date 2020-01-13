@@ -46,7 +46,8 @@ class m200111_155419_create_section_article_table extends Migration
         $this->createIndex(
             'section_article',
             'section_article',
-            'section_id, article_id'
+            'section_id, article_id',
+            true
         );
         $this->createIndex(
             'order',
