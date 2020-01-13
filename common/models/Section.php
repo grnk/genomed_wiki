@@ -15,8 +15,7 @@ class Section extends BaseSection
      */
     public function rules()
     {
-        return array_replace_recursive(parent::rules(),
-	    [
+        return [
             [['title', 'created_at', 'updated_at', 'slug'], 'required'],
             [['order', 'parent_id', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
@@ -24,7 +23,7 @@ class Section extends BaseSection
             [['slug'], 'unique'],
             [['lock'], 'default', 'value' => '0'],
             [['lock'], 'mootensai\components\OptimisticLockValidator']
-        ]);
+        ];
     }
 	
     /**

@@ -57,20 +57,6 @@ class SectionArticle extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
-        return [
-            [['section_id', 'article_id'], 'integer'],
-            [['created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['lock'], 'default', 'value' => '0'],
-            [['lock'], 'mootensai\components\OptimisticLockValidator']
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return 'section_article';

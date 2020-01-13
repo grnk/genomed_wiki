@@ -14,8 +14,7 @@ class Article extends BaseArticle
      */
     public function rules()
     {
-        return array_replace_recursive(parent::rules(),
-	    [
+        return [
             [['title', 'created_at', 'updated_at', 'slug'], 'required'],
             [['date', 'created_at', 'updated_at'], 'safe'],
             [['order', 'status'], 'integer'],
@@ -24,7 +23,7 @@ class Article extends BaseArticle
             [['slug'], 'unique'],
             [['lock'], 'default', 'value' => '0'],
             [['lock'], 'mootensai\components\OptimisticLockValidator']
-        ]);
+        ];
     }
 	
     /**

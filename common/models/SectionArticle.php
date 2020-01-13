@@ -14,14 +14,13 @@ class SectionArticle extends BaseSectionArticle
      */
     public function rules()
     {
-        return array_replace_recursive(parent::rules(),
-	    [
+        return [
             [['section_id', 'article_id'], 'integer'],
             [['created_at', 'updated_at'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['lock'], 'default', 'value' => '0'],
             [['lock'], 'mootensai\components\OptimisticLockValidator']
-        ]);
+        ];
     }
 	
 }

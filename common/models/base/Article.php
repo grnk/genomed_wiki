@@ -63,23 +63,6 @@ class Article extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
-        return [
-            [['title', 'created_at', 'updated_at', 'slug'], 'required'],
-            [['date', 'created_at', 'updated_at'], 'safe'],
-            [['order', 'status'], 'integer'],
-            [['content', 'preview_text', 'preview_image'], 'string'],
-            [['title', 'meta_description', 'meta_keywords', 'slug'], 'string', 'max' => 255],
-            [['slug'], 'unique'],
-            [['lock'], 'default', 'value' => '0'],
-            [['lock'], 'mootensai\components\OptimisticLockValidator']
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return 'article';
