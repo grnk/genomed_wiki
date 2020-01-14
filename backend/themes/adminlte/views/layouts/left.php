@@ -32,6 +32,13 @@ use common\models\Section;
 
         <?php
         $items = [
+            ['label' => 'Edit sections', 'url' => ['/section']],
+            [
+                'label' => 'Sections',
+                'icon' => 'share',
+                'url' => '#',
+                'items' => Section::getItemsSectionForLeftMenu(),
+            ],
 //            ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
 //            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
 //            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
@@ -64,7 +71,7 @@ use common\models\Section;
 //            ],
         ];
 
-        $items = array_merge($items, Section::getItemsSectionForLeftMenu());
+//        $items = array_merge($items, Section::getItemsSectionForLeftMenu());
         ?>
 
         <?= dmstr\widgets\Menu::widget(
