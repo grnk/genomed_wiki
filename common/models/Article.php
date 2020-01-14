@@ -17,7 +17,7 @@ class Article extends BaseArticle
         return [
             [['title', 'slug'], 'required'],
             [['date', 'created_at', 'updated_at'], 'safe'],
-            [['order', 'status'], 'integer'],
+            [['status'], 'integer'],
             [['content', 'preview_text', 'preview_image'], 'string'],
             [['title', 'meta_description', 'meta_keywords', 'slug'], 'string', 'max' => 255],
             [['slug'], 'unique'],
@@ -33,7 +33,6 @@ class Article extends BaseArticle
             'id' => 'ID',
             'title' => 'Название статьи',
             'date' => 'Выводимое время',
-            'order' => 'Сортировка',
             'content' => 'Content',
             'status' => 'Статус активности',
             'meta_description' => 'Мета описание',

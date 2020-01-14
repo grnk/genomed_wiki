@@ -3,13 +3,9 @@
 namespace common\models\base;
 
 use common\models\ArticleQuery;
-use mootensai\relation\RelationTrait;
 use yii\behaviors\TimestampBehavior;
-use yii\behaviors\BlameableBehavior;
-use mootensai\behaviors\UUIDBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
-use Yii;
 
 /**
  * This is the base model class for table "article".
@@ -17,7 +13,6 @@ use Yii;
  * @property integer $id
  * @property string $title
  * @property string $date
- * @property integer $order
  * @property string $content
  * @property integer $status
  * @property string $meta_description
@@ -61,7 +56,6 @@ class Article extends ActiveRecord
             'id' => 'ID',
             'title' => 'Название статьи',
             'date' => 'Выводимое время',
-            'order' => 'Сортировка',
             'content' => 'Content',
             'status' => 'Статус активности',
             'meta_description' => 'Мета описание',
