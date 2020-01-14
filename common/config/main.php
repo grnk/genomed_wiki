@@ -1,4 +1,6 @@
 <?php
+include __DIR__ . '/../functions/functions.php';
+
 return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
