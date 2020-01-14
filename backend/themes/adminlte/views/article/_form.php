@@ -1,17 +1,22 @@
 <?php
 
+use dosamigos\ckeditor\CKEditor;
+use mootensai\components\JsBlock;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Json;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Article */
 /* @var $form yii\widgets\ActiveForm */
 
-\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
     'viewParams' => [
         'class' => 'SectionArticle', 
         'relID' => 'section-article', 
-        'value' => \yii\helpers\Json::encode($model->sectionArticles),
+        'value' => Json::encode($model->sectionArticles),
         'isNewRecord' => ($model->isNewRecord) ? 1 : 0
     ]
 ]);
@@ -39,7 +44,10 @@ use yii\widgets\ActiveForm;
         ],
     ]);*/ ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'content')->widget(CKEditor::class, [
+        'options' => ['rows' => 6],
+        'preset' => 'basic'
+    ]); ?>
 
     <?= $form->field($model, 'status')->textInput(['placeholder' => 'Status']) ?>
 
@@ -58,7 +66,7 @@ use yii\widgets\ActiveForm;
         [
             'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'SectionArticle')),
             'content' => $this->render('_formSectionArticle', [
-                'row' => \yii\helpers\ArrayHelper::toArray($model->sectionArticles),
+                'row' => ArrayHelper::toArray($model->sectionArticles),
             ]),
         ],
     ];
