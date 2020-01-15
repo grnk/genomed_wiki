@@ -104,6 +104,11 @@ class ArticleController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            foreach ($model->sectionArticleParse(Yii::$app->request->post()) as $newSectionArticles) {
+                $model->createSectionArticle($newSectionArticles['section_id'], $newSectionArticles['order']);
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

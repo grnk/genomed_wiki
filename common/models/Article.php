@@ -42,4 +42,51 @@ class Article extends BaseArticle
             'slug' => 'Уникальное название статьи',
         ];
     }
+
+    /**
+     * @param $sectionId
+     * @param $order
+     * @return bool
+     */
+    public function createSectionArticle($sectionId, $order)
+    {
+        if(empty($sectionId)) {
+            return false;
+        }
+
+
+        return $sectionArticle = (new SectionArticle([
+            'section_id' => $sectionId,
+            'article_id' => $this->id,
+            'order' => $order,
+        ]))->save();
+    }
+
+    /**
+     * @param $sectionId
+     * @return false|int
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
+    public function deleteSectionArticle($sectionId)
+    {
+        $sectionArticle = SectionArticle::find()->andWhere([
+            'section_id' => $sectionId,
+            'article_id' => $this->id,
+        ])->one();
+
+        return $sectionArticle->delete();
+    }
+
+    public function sectionArticleParse($post)
+    {
+        $sectionArticles = [];
+        foreach ($post['SectionArticle'] as $sectionArticle) {
+            if($sectionArticle['id'] === '') {
+                $sectionArticles[] = $sectionArticle;
+            }
+        }
+
+        return $sectionArticles;
+    }
 }
