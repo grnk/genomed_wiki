@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\SectionSearch */
+/* @var $searchModel common\models\search\SectionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use common\models\Section;
@@ -20,12 +20,11 @@ $this->registerJs($search);
 ?>
 <div class="section-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a(Yii::t('app', 'Create Section'), ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('app', 'Advance Search'), '#', ['class' => 'btn btn-info search-button']) ?>
+        <?php /*echo Html::a(Yii::t('app', 'Advance Search'), '#', ['class' => 'btn btn-info search-button'])*/ ?>
     </p>
     <div class="search-form" style="display:none">
         <?=  $this->render('_search', ['model' => $searchModel]); ?>
@@ -81,7 +80,6 @@ $this->registerJs($search);
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-section']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-            'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
         ],
         'export' => false,
         // your toolbar can include the additional full export menu

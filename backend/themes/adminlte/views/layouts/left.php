@@ -32,9 +32,9 @@ use common\models\Section;
 
         <?php
         $items = [
-            ['label' => 'Edit sections', 'url' => ['/section']],
+            ['label' => Yii::t('app', 'Edit sections'), 'url' => ['/section']],
             [
-                'label' => 'Sections',
+                'label' => Yii::t('app', 'Sections'),
                 'icon' => 'share',
                 'url' => '#',
                 'items' => Section::getItemsSectionForLeftMenu(),
