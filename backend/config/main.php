@@ -9,6 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
+    'language' => 'ru-RU',
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
@@ -58,6 +59,28 @@ return [
                     '@backend/views' => '@backend/themes/adminlte/views'
                 ],
             ],
+        ],
+    ],
+    'controllerMap' => [
+        'elfinder' => [
+            'class' => 'mihaildev\elfinder\PathController',
+            'access' => ['@'],
+            'root' => [
+//                    'baseUrl'=>(file_exists("C:\\OSPanel")) ?  HTTP."://task.genomed.local" : HTTP."://task.genomed.ru",
+                'basePath'=>'@backend/web',
+                'path' => 'files',
+                'name' => 'Хранилище изображений',
+            ],
+
+            /*                'watermark' => [
+                                //'source'         => __DIR__.'/logo.png', // Path to Water mark image
+                                'marginRight'    => 5,          // Margin right pixel
+                                'marginBottom'   => 5,          // Margin bottom pixel
+                                'quality'        => 95,         // JPEG image save quality
+                                'transparency'   => 70,         // Water mark image transparency ( other than PNG )
+                                'targetType'     => IMG_GIF|IMG_JPG|IMG_PNG|IMG_WBMP, // Target image formats ( bit-field )
+                                'targetMinPixel' => 200         // Target image minimum pixel size
+                            ]*/
         ],
     ],
     'params' => $params,

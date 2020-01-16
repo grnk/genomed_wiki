@@ -22,7 +22,9 @@
         "mootensai/yii2-enhanced-gii": "dev-master",
         "dmstr/yii2-adminlte-asset": "^2.1",
         "fxp/composer-asset-plugin": "^1.4",
-        "2amigos/yii2-ckeditor-widget": "^2.2"
+        "2amigos/yii2-ckeditor-widget": "^2.2",
+        "mihaildev/yii2-elfinder": "*",
+        "mihaildev/yii2-ckeditor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
