@@ -8,7 +8,7 @@ use Yii;
 use yii\web\Controller;
 use yii\web\Response;
 
-class TaskController extends Controller
+class FileController extends Controller
 {
     /**
      * Сообщение об ошибке
@@ -31,33 +31,21 @@ class TaskController extends Controller
     public $error_type = 0;
 
     /**
+     * Данные к выдаче
+     *
+     * @var
+     */
+    public $data;
+
+    /**
      * Базовая инициализация
      */
     public function init_ajax()
     {
-//        $this->init_group();
-//        $this->error = 'yes';
-//        $this->msg = Yii::$app->params['messages']['user']['error']['params'];
+        $this->error = 'yes';
+        $this->msg = Yii::$app->params['messages']['user']['error']['params'];
         Yii::$app->response->format = Response::FORMAT_JSON;
     }
-
-    /**
-     * Группа текущего пользователя
-     */
-//    public function init_group()
-//    {
-//        if (!$this->group || $this->group == 'guest') {
-//            if (Yii::$app->user->isGuest) {
-//                $this->group = 'guest';
-//            } else {
-//                if (User_groupe::find()->where(['user_id'=>Yii::$app->user->identity->lis_id])->exists()) {
-//                    $user_group_model = User_groupe::findOne(['user_id'=>Yii::$app->user->identity->lis_id]);
-//                    $this->group = $user_group_model->groupe;
-//                }
-//            }
-//        }
-//    }
-
 
     /**
      * Загрузка картинки через AJAX в CKEDITOR
@@ -88,7 +76,6 @@ class TaskController extends Controller
      */
     public function actionSave_screenshot()
     {
-        $screenName = false;
 
         $this->init_ajax();
         if (Yii::$app->request->isPost) {
@@ -100,13 +87,11 @@ class TaskController extends Controller
                     file_put_contents(__DIR__.'/../web/files/screen/'.$file_name,$file_content, LOCK_EX );
                     $this->error = 'no';
                     $this->msg = '/files/screen/'.$file_name;
-                    $screenName = '/files/screen/'.$file_name;
                 }
             }
         }
 
-        return ['error'=>'error', 'error_type','msg'=>$screenName, 'data'=> '' ];
-//        return $this->out();
+        return $this->out();
     }
 
     /**
@@ -118,5 +103,15 @@ class TaskController extends Controller
     {
         $dateFile = new \DateTime();
         return md5($dateFile->format('Y-m-d H:i:s') . rand(0, 10000));
+    }
+
+    /**
+     * Стандартная выдача сообщений
+     *
+     * @return array
+     */
+    public function out()
+    {
+        return ['error'=>$this->error, $this->error_type,'msg'=>$this->msg, 'data'=> ($this->error=='no') ? $this->data : '' ];
     }
 }

@@ -56,7 +56,7 @@
             // data_send[param] = token;
             data_send['input'] = evt.target.result;
             $.ajax({
-                url: this_host + "/task/save_screenshot",
+                url: this_host + "/file/save_screenshot",
                 async: false,
                 type: 'POST',
                 dataType: 'JSON',
