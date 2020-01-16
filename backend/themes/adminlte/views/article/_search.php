@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title']) ?>
 
-    <?= $form->field($model, 'date')->widget(\kartik\datecontrol\DateControl::classname(), [
+    <?php /*echo $form->field($model, 'date')->widget(\kartik\datecontrol\DateControl::classname(), [
         'type' => \kartik\datecontrol\DateControl::FORMAT_DATETIME,
         'saveFormat' => 'php:Y-m-d H:i:s',
         'ajaxConversion' => true,
@@ -29,7 +29,7 @@ use yii\widgets\ActiveForm;
                 'autoclose' => true,
             ]
         ],
-    ]); ?>
+    ]);*/ ?>
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 

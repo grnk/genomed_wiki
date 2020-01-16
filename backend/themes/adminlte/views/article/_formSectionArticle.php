@@ -1,10 +1,13 @@
 <div class="form-group" id="add-section-article">
 <?php
+
+use common\models\Section;
 use kartik\grid\GridView;
 use kartik\builder\TabularForm;
+use kartik\widgets\Select2;
 use yii\data\ArrayDataProvider;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\widgets\Pjax;
 
 $dataProvider = new ArrayDataProvider([
     'allModels' => $row,
@@ -25,9 +28,9 @@ echo TabularForm::widget([
         'section_id' => [
             'label' => 'Section',
             'type' => TabularForm::INPUT_WIDGET,
-            'widgetClass' => \kartik\widgets\Select2::className(),
+            'widgetClass' => Select2::class,
             'options' => [
-                'data' => \yii\helpers\ArrayHelper::map(\common\models\Section::find()->orderBy('title')->asArray()->all(), 'id', 'title'),
+                'data' => ArrayHelper::map(Section::find()->orderBy('title')->asArray()->all(), 'id', 'title'),
                 'options' => ['placeholder' => Yii::t('app', 'Choose Section')],
             ],
             'columnOptions' => ['width' => '200px']
