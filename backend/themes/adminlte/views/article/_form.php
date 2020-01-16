@@ -1,12 +1,14 @@
 <?php
 
-use dosamigos\ckeditor\CKEditor;
+//use dosamigos\ckeditor\CKEditor;
 use mootensai\components\JsBlock;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\View;
 use yii\widgets\ActiveForm;
+use mihaildev\elfinder\ElFinder;
+use mihaildev\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Article */
@@ -44,10 +46,13 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
         ],
     ]);*/ ?>
 
-    <?= $form->field($model, 'content')->widget(CKEditor::class, [
-        'options' => ['rows' => 6],
-        'preset' => 'basic'
-    ]); ?>
+    <?= $form->field($model, 'content')->widget(CKEditor::class, ['editorOptions' => ElFinder::ckeditorOptions(['elfinder'], [
+        'height'=>500,
+        'preset'=>'full',
+        'customConfig' => '/js/ckeditor/config.js',
+        'basicEntities' => false,
+        'filebrowserUploadUrl' => '/task/ckeditor_image_upload'
+    ])]); ?>
 
     <?= $form->field($model, 'status')->textInput(['placeholder' => 'Status']) ?>
 
