@@ -51,7 +51,7 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
         'preset'=>'full',
         'customConfig' => '/js/ckeditor/config.js',
         'basicEntities' => false,
-        'filebrowserUploadUrl' => '/task/ckeditor_image_upload'
+        'filebrowserUploadUrl' => '/file/ckeditor_image_upload'
     ])]); ?>
 
     <?= $form->field($model, 'status')->textInput(['placeholder' => 'Status']) ?>
