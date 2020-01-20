@@ -105,7 +105,7 @@ class ArticleController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            foreach ($model->sectionArticleParse(Yii::$app->request->post()) as $newSectionArticles) {
+            foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
                 $model->createSectionArticle($newSectionArticles['section_id'], $newSectionArticles['order']);
             }
 

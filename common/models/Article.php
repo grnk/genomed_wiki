@@ -82,7 +82,7 @@ class Article extends BaseArticle
         return $sectionArticle->delete();
     }
 
-    public function sectionArticleParse($post)
+    public function getNewSectionArticles($post)
     {
         $sectionArticles = [];
         foreach ($post['SectionArticle'] as $sectionArticle) {
