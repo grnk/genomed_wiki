@@ -3,6 +3,7 @@
 namespace common\models\base;
 
 use common\models\ArticleQuery;
+use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
@@ -71,7 +72,7 @@ class Article extends ActiveRecord
      */
     public function getSectionArticles()
     {
-        return $this->hasMany(\common\models\SectionArticle::className(), ['article_id' => 'id']);
+        return $this->hasMany(\common\models\SectionArticle::class, ['article_id' => 'id']);
     }
     
     /**
@@ -82,10 +83,17 @@ class Article extends ActiveRecord
     {
         return [
             'timestamp' => [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'createdAtAttribute' => 'created_at',
                 'updatedAtAttribute' => 'updated_at',
                 'value' => new Expression('NOW()'),
+            ],
+            [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'title',
+                'slugAttribute' => 'slug',
+                'ensureUnique' => true,
+                'immutable' => true,
             ],
         ];
     }

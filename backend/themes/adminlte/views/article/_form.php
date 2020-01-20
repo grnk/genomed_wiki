@@ -1,6 +1,5 @@
 <?php
 
-//use dosamigos\ckeditor\CKEditor;
 use mootensai\components\JsBlock;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -60,11 +59,11 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
 
     <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true, 'placeholder' => 'Meta Keywords']) ?>
 
-    <?php// echo $form->field($model, 'preview_text')->textarea(['rows' => 6]) ?>
+    <?php /*echo $form->field($model, 'preview_text')->textarea(['rows' => 6])*/ ?>
 
-    <?php //echo $form->field($model, 'preview_image')->textarea(['rows' => 6]) ?>
+    <?php /*echo $form->field($model, 'preview_image')->textarea(['rows' => 6])*/ ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true, 'placeholder' => 'Slug']) ?>
+    <?php /*echo $form->field($model, 'slug')->textInput(['maxlength' => true, 'placeholder' => 'Slug'])*/ ?>
 
     <?php
     $forms = [
