@@ -3,11 +3,9 @@
 namespace common\models\base;
 
 use common\models\SectionQuery;
-use mootensai\relation\RelationTrait;
 use Yii;
+use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
-use yii\behaviors\BlameableBehavior;
-use mootensai\behaviors\UUIDBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 
@@ -115,6 +113,13 @@ class Section extends ActiveRecord
                 'createdAtAttribute' => 'created_at',
                 'updatedAtAttribute' => 'updated_at',
                 'value' => new Expression('NOW()'),
+            ],
+            [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'title',
+                'slugAttribute' => 'slug',
+                'ensureUnique' => true,
+                'immutable' => true,
             ],
         ];
     }
