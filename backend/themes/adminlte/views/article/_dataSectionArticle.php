@@ -14,10 +14,10 @@ use yii\data\ArrayDataProvider;
                 'label' => Yii::t('app', 'Section')
             ],
         'order',
-        [
-            'class' => 'yii\grid\ActionColumn',
-            'controller' => 'section-article'
-        ],
+//        [
+//            'class' => 'yii\grid\ActionColumn',
+//            'controller' => 'section-article'
+//        ],
     ];
     
     echo GridView::widget([
