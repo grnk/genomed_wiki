@@ -2,3 +2,20 @@
     background-color: #fff;
     padding: 10px;
 }
+
+
+/*Правка вёртски для левого меню*/
+.treeview ul li a {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.treeview ul li a span{
+    white-space: normal;
+}
+.treeview ul li a i{
+    margin-right: 10px;
+    width: auto !important;
+}
+/*Правка вёртски для левого меню*/
