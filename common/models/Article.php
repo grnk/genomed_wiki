@@ -9,6 +9,10 @@ use \common\models\base\Article as BaseArticle;
  */
 class Article extends BaseArticle
 {
+
+    const ARTICLE_ACTIVE = 1;
+    const ARTICLE_inactive = 0;
+
     /**
      * @inheritdoc
      */
