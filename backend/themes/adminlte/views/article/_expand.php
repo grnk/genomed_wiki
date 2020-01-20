@@ -3,6 +3,12 @@ use yii\helpers\Html;
 use kartik\tabs\TabsX;
 $items = [
     [
+        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Preview')),
+        'content' => $this->render('_view', [
+            'model' => $model,
+        ]),
+    ],
+    [
         'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Article')),
         'content' => $this->render('_detail', [
             'model' => $model,
