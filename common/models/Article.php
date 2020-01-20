@@ -9,13 +9,17 @@ use \common\models\base\Article as BaseArticle;
  */
 class Article extends BaseArticle
 {
+
+    const ARTICLE_ACTIVE = 1;
+    const ARTICLE_inactive = 0;
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['title', 'slug'], 'required'],
+            [['title'], 'required'],
             [['date', 'created_at', 'updated_at'], 'safe'],
             [['status'], 'integer'],
             [['content', 'preview_text', 'preview_image'], 'string'],

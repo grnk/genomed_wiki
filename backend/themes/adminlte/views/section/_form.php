@@ -51,13 +51,13 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
         ],
     ]); ?>
 
-    <?= $form->field($model, 'status')->textInput(['placeholder' => 'Status']) ?>
+    <?= $form->field($model, 'status')->textInput(['placeholder' => 'Status', 'value' => '1']) ?>
 
     <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true, 'placeholder' => 'Meta Description']) ?>
 
     <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true, 'placeholder' => 'Meta Keywords']) ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true, 'placeholder' => 'Slug']) ?>
+    <?php /*echo $form->field($model, 'slug')->textInput(['maxlength' => true, 'placeholder' => 'Slug'])*/ ?>
 
     <?php
     $forms = [
