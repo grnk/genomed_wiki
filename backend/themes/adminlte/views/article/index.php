@@ -9,7 +9,7 @@ use kartik\export\ExportMenu;
 use kartik\grid\GridView;
 
 $this->title = Yii::t('app', 'Articles');
-$this->params['breadcrumbs'][] = $this->title;
+//$this->params['breadcrumbs'][] = $this->title;
 //$search = "$('.search-button').click(function(){
 //	$('.search-form').toggle(1000);
 //	return false;
@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Article'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php /*echo Html::a(Yii::t('app', 'Create Article'), ['create'], ['class' => 'btn btn-success'])*/ ?>
         <?php /*echo Html::a(Yii::t('app', 'Advance Search'), '#', ['class' => 'btn btn-info search-button'])*/ ?>
     </p>
     <div class="search-form" style="display:none">
@@ -43,17 +43,28 @@ $this->params['breadcrumbs'][] = $this->title;
             'expandOneOnly' => true
         ],
         ['attribute' => 'id', 'visible' => false],
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'visibleButtons' => [
+                'view' => false,
+                'delete' => false,
+            ],
+        ],
         'title',
 //        'date',
+        'meta_description',
+        'created_at:datetime:Дата добавления',
 //        'content:ntext',
 //        'status',
-        'meta_description',
-        'meta_keywords',
+//        'meta_keywords',
 //        'preview_text:ntext',
 //        'preview_image:ntext',
 //        'slug',
         [
             'class' => 'yii\grid\ActionColumn',
+            'visibleButtons' => [
+                'update' => false,
+            ],
         ],
     ]; 
     ?>
@@ -65,6 +76,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-article']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
+            'heading' => Html::encode($this->title)
+                .Html::a(Yii::t('app', 'Create Article'), ['create'], ['class' => 'btn btn-success', 'style' => 'margin-left: 50px;']),
         ],
         'export' => false,
         // your toolbar can include the additional full export menu

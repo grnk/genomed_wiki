@@ -11,7 +11,7 @@ use kartik\export\ExportMenu;
 use kartik\grid\GridView;
 
 $this->title = Yii::t('app', 'Sections');
-$this->params['breadcrumbs'][] = $this->title;
+//$this->params['breadcrumbs'][] = $this->title;
 $search = "$('.search-button').click(function(){
 	$('.search-form').toggle(1000);
 	return false;
@@ -23,7 +23,7 @@ $this->registerJs($search);
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Section'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php /*echo Html::a(Yii::t('app', 'Create Section'), ['create'], ['class' => 'btn btn-success'])*/ ?>
         <?php /*echo Html::a(Yii::t('app', 'Advance Search'), '#', ['class' => 'btn btn-info search-button'])*/ ?>
     </p>
     <div class="search-form" style="display:none">
@@ -32,19 +32,26 @@ $this->registerJs($search);
     <?php 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
-        [
-            'class' => 'kartik\grid\ExpandRowColumn',
-            'width' => '50px',
-            'value' => function ($model, $key, $index, $column) {
-                return GridView::ROW_COLLAPSED;
-            },
-            'detail' => function ($model, $key, $index, $column) {
-                return Yii::$app->controller->renderPartial('_expand', ['model' => $model]);
-            },
-            'headerOptions' => ['class' => 'kartik-sheet-style'],
-            'expandOneOnly' => true
-        ],
+//        [
+//            'class' => 'kartik\grid\ExpandRowColumn',
+//            'width' => '50px',
+//            'value' => function ($model, $key, $index, $column) {
+//                return GridView::ROW_COLLAPSED;
+//            },
+//            'detail' => function ($model, $key, $index, $column) {
+//                return Yii::$app->controller->renderPartial('_expand', ['model' => $model]);
+//            },
+//            'headerOptions' => ['class' => 'kartik-sheet-style'],
+//            'expandOneOnly' => true
+//        ],
         ['attribute' => 'id', 'visible' => false],
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'visibleButtons' => [
+                'view' => false,
+                'delete' => false,
+            ],
+        ],
         'title',
         'order',
         [
@@ -65,10 +72,14 @@ $this->registerJs($search);
             ],
         'status',
         'meta_description',
-        'meta_keywords',
-        'slug',
+//        'meta_keywords',
+        'created_at:datetime:Дата добавления',
+//        'slug',
         [
             'class' => 'yii\grid\ActionColumn',
+            'visibleButtons' => [
+                'update' => false,
+            ],
         ],
     ]; 
     ?>
@@ -80,6 +91,8 @@ $this->registerJs($search);
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-section']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
+            'heading' => Html::encode($this->title)
+                . Html::a(Yii::t('app', 'Create Section'), ['create'], ['class' => 'btn btn-success', 'style' => 'margin-left: 50px;']),
         ],
         'export' => false,
         // your toolbar can include the additional full export menu

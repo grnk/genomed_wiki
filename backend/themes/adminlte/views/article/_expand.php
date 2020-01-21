@@ -8,19 +8,19 @@ $items = [
             'model' => $model,
         ]),
     ],
-    [
-        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Article')),
-        'content' => $this->render('_detail', [
-            'model' => $model,
-        ]),
-    ],
-        [
-        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Section Article')),
-        'content' => $this->render('_dataSectionArticle', [
-            'model' => $model,
-            'row' => $model->sectionArticles,
-        ]),
-    ],
+//    [
+//        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Article')),
+//        'content' => $this->render('_detail', [
+//            'model' => $model,
+//        ]),
+//    ],
+//        [
+//        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Section Article')),
+//        'content' => $this->render('_dataSectionArticle', [
+//            'model' => $model,
+//            'row' => $model->sectionArticles,
+//        ]),
+//    ],
     ];
 echo TabsX::widget([
     'items' => $items,
