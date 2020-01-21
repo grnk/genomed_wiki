@@ -49,6 +49,9 @@ $this->title = Yii::t('app', 'Articles');
                 'view' => false,
                 'delete' => false,
             ],
+            'contentOptions' => [
+                'style' => 'white-space: nowrap;',
+            ],
         ],
         'title',
 //        'date',
@@ -64,6 +67,9 @@ $this->title = Yii::t('app', 'Articles');
             'class' => 'yii\grid\ActionColumn',
             'visibleButtons' => [
                 'update' => false,
+            ],
+            'contentOptions' => [
+                'style' => 'white-space: nowrap;',
             ],
         ],
     ]; 

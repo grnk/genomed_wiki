@@ -51,6 +51,9 @@ $this->registerJs($search);
                 'view' => false,
                 'delete' => false,
             ],
+            'contentOptions' => [
+                'style' => 'white-space: nowrap;',
+            ],
         ],
         'title',
         'order',
@@ -79,6 +82,9 @@ $this->registerJs($search);
             'class' => 'yii\grid\ActionColumn',
             'visibleButtons' => [
                 'update' => false,
+            ],
+            'contentOptions' => [
+                'style' => 'white-space: nowrap;',
             ],
         ],
     ]; 
