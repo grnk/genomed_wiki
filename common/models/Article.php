@@ -67,21 +67,9 @@ class Article extends BaseArticle
     }
 
     /**
-     * @param $sectionId
-     * @return false|int
-     * @throws \Throwable
-     * @throws \yii\db\StaleObjectException
+     * @param $post
+     * @return array
      */
-    public function deleteSectionArticle($sectionId)
-    {
-        $sectionArticle = SectionArticle::find()->andWhere([
-            'section_id' => $sectionId,
-            'article_id' => $this->id,
-        ])->one();
-
-        return $sectionArticle->delete();
-    }
-
     public function getNewSectionArticles($post)
     {
         $sectionArticles = [];
@@ -91,11 +79,19 @@ class Article extends BaseArticle
         }
 
         foreach ($post['SectionArticle'] as $sectionArticle) {
-            if($sectionArticle['id'] === '') {
+//            if($sectionArticle['id'] === '') {
                 $sectionArticles[] = $sectionArticle;
-            }
+//            }
         }
 
         return $sectionArticles;
+    }
+
+    /**
+     * Удаляет все SectionArticle
+     */
+    public function deleteAllSectionArticle()
+    {
+        SectionArticle::deleteAll('article_id = ' . $this->id);
     }
 }

@@ -118,7 +118,7 @@ class ArticleController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
+            $model->deleteAllSectionArticle();
             foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
                 $model->createSectionArticle($newSectionArticles['section_id'], $newSectionArticles['order']);
             }
