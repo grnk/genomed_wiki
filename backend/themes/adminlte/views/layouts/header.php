@@ -22,7 +22,7 @@ use yii\helpers\Html;
 
                 <li class="dropdown user user-menu">
                     <?= Html::a(
-                        Yii::t('app', 'exit'),
+                        Yii::t('app', 'Logout (' . Yii::$app->user->identity->username . ')'),
                         ['/site/logout'],
                         ['data-method' => 'post', 'class' => 'btn']
                     ) ?>

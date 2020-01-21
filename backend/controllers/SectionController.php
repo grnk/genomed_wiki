@@ -6,6 +6,7 @@ use Yii;
 use common\models\Section;
 use common\models\search\SectionSearch;
 use yii\data\ArrayDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -24,6 +25,19 @@ class SectionController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-section-article', 'add-section'],
+                        'roles' => ['@']
+                    ],
+                    [
+                        'allow' => false
+                    ]
+                ]
+            ]
         ];
     }
 
