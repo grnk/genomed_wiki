@@ -3,7 +3,6 @@
 namespace common\models\search;
 
 use common\models\Section;
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Article;
@@ -78,4 +77,43 @@ use common\models\Article;
 
         return $dataProvider;
     }
+
+     /**
+      * @param $params
+      * @return ActiveDataProvider
+      */
+     public function searchArticles($params)
+     {
+        $query = Article::find();
+
+         $dataProvider = new ActiveDataProvider([
+             'query' => $query,
+         ]);
+
+         $this->load($params);
+
+         if (!$this->validate()) {
+             // uncomment the following line if you do not want to return any records when validation fails
+             // $query->where('0=1');
+             return $dataProvider;
+         }
+
+         $query->andFilterWhere([
+             'id' => $this->id,
+             'date' => $this->date,
+             'status' => $this->status,
+             'created_at' => $this->created_at,
+             'updated_at' => $this->updated_at,
+         ]);
+
+         $query->andFilterWhere(['like', 'title', $this->title])
+             ->andFilterWhere(['like', 'content', $this->content])
+             ->andFilterWhere(['like', 'meta_description', $this->meta_description])
+             ->andFilterWhere(['like', 'meta_keywords', $this->meta_keywords])
+             ->andFilterWhere(['like', 'preview_text', $this->preview_text])
+             ->andFilterWhere(['like', 'preview_image', $this->preview_image])
+             ->andFilterWhere(['like', 'slug', $this->slug]);
+
+         return $dataProvider;
+     }
 }

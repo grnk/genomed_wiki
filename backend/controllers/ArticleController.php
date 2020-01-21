@@ -30,7 +30,7 @@ class ArticleController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-section-article'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-section-article', 'articles'],
                         'roles' => ['@']
                     ],
                     [
@@ -49,6 +49,20 @@ class ArticleController extends Controller
     {
         $searchModel = new ArticleSearch(['sectionId' => $sectionId]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * @return string
+     */
+    public function actionArticles()
+    {
+        $searchModel = new ArticleSearch();
+        $dataProvider = $searchModel->searchArticles(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
