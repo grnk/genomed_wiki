@@ -31,7 +31,9 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'placeholder' => 'Title']) ?>
+    <?= $form->field($model, 'title', [
+        'hintOptions' => ['style' => 'display: none;'],
+    ])->textInput(['maxlength' => true]) ?>
 
     <?php /*echo $form->field($model, 'date')->widget(\kartik\datecontrol\DateControl::classname(), [
         'type' => \kartik\datecontrol\DateControl::FORMAT_DATETIME,
@@ -53,11 +55,17 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
         'filebrowserUploadUrl' => '/file/ckeditor_image_upload'
     ])]); ?>
 
-    <?= $form->field($model, 'status')->textInput(['placeholder' => 'Status', 'value' => '1']) ?>
+    <?= $form->field($model, 'status', [
+        'hintOptions' => ['style' => 'display: none;'],
+    ])->textInput(['value' => '1']) ?>
 
-    <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true, 'placeholder' => 'Meta Description']) ?>
+    <?= $form->field($model, 'meta_description', [
+        'hintOptions' => ['style' => 'display: none;'],
+    ])->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true, 'placeholder' => 'Meta Keywords']) ?>
+    <?= $form->field($model, 'meta_keywords', [
+        'hintOptions' => ['style' => 'display: none;'],
+    ])->textInput(['maxlength' => true]) ?>
 
     <?php /*echo $form->field($model, 'preview_text')->textarea(['rows' => 6])*/ ?>
 

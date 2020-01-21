@@ -19,7 +19,7 @@ class Article extends BaseArticle
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'status'], 'required'],
             [['date', 'created_at', 'updated_at'], 'safe'],
             [['status'], 'integer'],
             [['content', 'preview_text', 'preview_image'], 'string'],
