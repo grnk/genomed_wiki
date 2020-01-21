@@ -53,53 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
     </div>
     <div class="row">
-        <h4>Section<?= ' '. Html::encode($this->title) ?></h4>
-    </div>
-    <?php 
-    $gridColumnSection = [
-        ['attribute' => 'id', 'visible' => false],
-        'title',
-        'order',
-        'status',
-        'meta_description',
-        'meta_keywords',
-        'slug',
-    ];
-    echo DetailView::widget([
-        'model' => $model,
-        'attributes' => $gridColumnSection    ]);
-    ?>
-    
-    <div class="row">
-<?php
-if($providerSection->totalCount){
-    $gridColumnSection = [
-        ['class' => 'yii\grid\SerialColumn'],
-            ['attribute' => 'id', 'visible' => false],
-            'title',
-            'order',
-                        'status',
-            'meta_description',
-            'meta_keywords',
-            'slug',
-    ];
-    echo Gridview::widget([
-        'dataProvider' => $providerSection,
-        'pjax' => true,
-        'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-section']],
-        'panel' => [
-            'type' => GridView::TYPE_PRIMARY,
-            'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode(Yii::t('app', 'Section')),
-        ],
-        'export' => false,
-        'columns' => $gridColumnSection
-    ]);
-}
-?>
-
-    </div>
-    
-    <div class="row">
 <?php
 if($providerSectionArticle->totalCount){
     $gridColumnSectionArticle = [
