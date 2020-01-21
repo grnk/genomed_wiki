@@ -94,6 +94,11 @@ class SectionController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->deleteAllSectionArticle();
+            foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
+                $model->createSectionArticle($newSectionArticles['article_id'], $newSectionArticles['order']);
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

@@ -42,11 +42,17 @@ class Section extends BaseSection
         ];
     }
 
+    /**
+     * @return string
+     */
     public function getUrl()
     {
         return Url::to(['article/index', 'sectionId' => $this->id]);
     }
 
+    /**
+     * @return array
+     */
     public static function getItemsSectionForLeftMenu()
     {
         $items = [];
@@ -58,5 +64,50 @@ class Section extends BaseSection
         return $items;
     }
 
+    /**
+     * Удаляет все SectionArticle
+     */
+    public function deleteAllSectionArticle()
+    {
+        SectionArticle::deleteAll('section_id = ' . $this->id);
+    }
+
+    /**
+     * @param $post
+     * @return array
+     */
+    public function getNewSectionArticles($post)
+    {
+        $sectionArticles = [];
+
+        if (empty($post['SectionArticle'])) {
+            return [];
+        }
+
+        foreach ($post['SectionArticle'] as $sectionArticle) {
+            $sectionArticles[] = $sectionArticle;
+        }
+
+        return $sectionArticles;
+    }
+
+    /**
+     * @param $articleId
+     * @param $order
+     * @return bool
+     */
+    public function createSectionArticle($articleId, $order)
+    {
+        if(empty($articleId)) {
+            return false;
+        }
+
+
+        return $sectionArticle = (new SectionArticle([
+            'section_id' => $this->id,
+            'article_id' => $articleId,
+            'order' => $order,
+        ]))->save();
+    }
 
 }

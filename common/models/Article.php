@@ -79,9 +79,7 @@ class Article extends BaseArticle
         }
 
         foreach ($post['SectionArticle'] as $sectionArticle) {
-//            if($sectionArticle['id'] === '') {
                 $sectionArticles[] = $sectionArticle;
-//            }
         }
 
         return $sectionArticles;
