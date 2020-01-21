@@ -17,7 +17,7 @@ class Section extends BaseSection
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'status'], 'required'],
             [['order', 'parent_id', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'meta_description', 'meta_keywords', 'slug'], 'string', 'max' => 255],
