@@ -85,6 +85,11 @@ class Article extends BaseArticle
     public function getNewSectionArticles($post)
     {
         $sectionArticles = [];
+
+        if(empty($post['SectionArticle'])) {
+            return [];
+        }
+
         foreach ($post['SectionArticle'] as $sectionArticle) {
             if($sectionArticle['id'] === '') {
                 $sectionArticles[] = $sectionArticle;
