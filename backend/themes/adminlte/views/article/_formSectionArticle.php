@@ -26,7 +26,7 @@ echo TabularForm::widget([
     'attributes' => [
         "id" => ['type' => TabularForm::INPUT_HIDDEN, 'columnOptions' => ['hidden'=>true]],
         'section_id' => [
-            'label' => 'Section',
+            'label' => Yii::t('app', 'Section'),
             'type' => TabularForm::INPUT_WIDGET,
             'widgetClass' => Select2::class,
             'options' => [
@@ -35,7 +35,10 @@ echo TabularForm::widget([
             ],
             'columnOptions' => ['width' => '200px']
         ],
-        'order' => ['type' => TabularForm::INPUT_TEXT],
+        'order' => [
+            'type' => TabularForm::INPUT_TEXT,
+            'label' => Yii::t('app', 'order'),
+        ],
         'del' => [
             'type' => 'raw',
             'label' => '',

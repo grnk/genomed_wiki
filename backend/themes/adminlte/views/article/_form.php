@@ -47,7 +47,9 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
         ],
     ]);*/ ?>
 
-    <?= $form->field($model, 'content')->widget(CKEditor::class, ['editorOptions' => ElFinder::ckeditorOptions(['elfinder'], [
+    <?= $form->field($model, 'content', [
+        'hintOptions' => ['style' => 'display: none;'],
+    ])->widget(CKEditor::class, ['editorOptions' => ElFinder::ckeditorOptions(['elfinder'], [
         'height'=>500,
         'preset'=>'full',
         'customConfig' => '/js/ckeditor/config.js',

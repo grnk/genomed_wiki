@@ -57,12 +57,15 @@ $this->params['breadcrumbs'][] = $this->title;
 if($providerSectionArticle->totalCount){
     $gridColumnSectionArticle = [
         ['class' => 'yii\grid\SerialColumn'],
-            ['attribute' => 'id', 'visible' => false],
-            [
-                'attribute' => 'section.title',
-                'label' => Yii::t('app', 'Section')
-            ],
-                        'order',
+        ['attribute' => 'id', 'visible' => false],
+        [
+            'attribute' => 'section.title',
+            'label' => Yii::t('app', 'Section')
+        ],
+        [
+            'attribute' => 'order',
+            'label' => Yii::t('app', 'order')
+        ],
     ];
     echo Gridview::widget([
         'dataProvider' => $providerSectionArticle,

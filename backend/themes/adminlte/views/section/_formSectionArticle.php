@@ -1,10 +1,13 @@
 <div class="form-group" id="add-section-article">
 <?php
+
+use common\models\Article;
 use kartik\grid\GridView;
 use kartik\builder\TabularForm;
+use kartik\widgets\Select2;
 use yii\data\ArrayDataProvider;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\widgets\Pjax;
 
 $dataProvider = new ArrayDataProvider([
     'allModels' => $row,
@@ -23,16 +26,19 @@ echo TabularForm::widget([
     'attributes' => [
         "id" => ['type' => TabularForm::INPUT_HIDDEN, 'columnOptions' => ['hidden'=>true]],
         'article_id' => [
-            'label' => 'Article',
+            'label' => Yii::t('app', 'Article'),
             'type' => TabularForm::INPUT_WIDGET,
-            'widgetClass' => \kartik\widgets\Select2::className(),
+            'widgetClass' => Select2::class,
             'options' => [
-                'data' => \yii\helpers\ArrayHelper::map(\common\models\Article::find()->orderBy('title')->asArray()->all(), 'id', 'title'),
+                'data' => ArrayHelper::map(Article::find()->orderBy('title')->asArray()->all(), 'id', 'title'),
                 'options' => ['placeholder' => Yii::t('app', 'Choose Article')],
             ],
             'columnOptions' => ['width' => '200px']
         ],
-        'order' => ['type' => TabularForm::INPUT_TEXT],
+        'order' => [
+            'type' => TabularForm::INPUT_TEXT,
+            'label' => Yii::t('app', 'order'),
+        ],
         'del' => [
             'type' => 'raw',
             'label' => '',

@@ -57,7 +57,7 @@ class Article extends ActiveRecord
             'id' => 'ID',
             'title' => 'Название статьи',
             'date' => 'Выводимое время',
-            'content' => 'Content',
+            'content' => 'Контент',
             'status' => 'Статус активности',
             'meta_description' => 'Мета описание',
             'meta_keywords' => 'Мета ключевые слова',

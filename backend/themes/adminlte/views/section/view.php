@@ -53,30 +53,32 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
     </div>
     <div class="row">
-<?php
-if($providerSectionArticle->totalCount){
-    $gridColumnSectionArticle = [
-        ['class' => 'yii\grid\SerialColumn'],
-            ['attribute' => 'id', 'visible' => false],
-                        [
-                'attribute' => 'article.title',
-                'label' => Yii::t('app', 'Article')
-            ],
-            'order',
-    ];
-    echo Gridview::widget([
-        'dataProvider' => $providerSectionArticle,
-        'pjax' => true,
-        'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-section-article']],
-        'panel' => [
-            'type' => GridView::TYPE_PRIMARY,
-            'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode(Yii::t('app', 'Section Article')),
-        ],
-        'export' => false,
-        'columns' => $gridColumnSectionArticle
-    ]);
-}
-?>
-
+        <?php
+        if($providerSectionArticle->totalCount){
+            $gridColumnSectionArticle = [
+                ['class' => 'yii\grid\SerialColumn'],
+                ['attribute' => 'id', 'visible' => false],
+                [
+                    'attribute' => 'article.title',
+                    'label' => Yii::t('app', 'Article')
+                ],
+                [
+                    'attribute' => 'order',
+                    'label' => Yii::t('app', 'order'),
+                ],
+            ];
+            echo Gridview::widget([
+                'dataProvider' => $providerSectionArticle,
+                'pjax' => true,
+                'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-section-article']],
+                'panel' => [
+                    'type' => GridView::TYPE_PRIMARY,
+                    'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode(Yii::t('app', 'Section Article')),
+                ],
+                'export' => false,
+                'columns' => $gridColumnSectionArticle
+            ]);
+        }
+        ?>
     </div>
 </div>
