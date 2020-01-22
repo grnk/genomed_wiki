@@ -29,11 +29,10 @@ return [
     'Create' => '',
     'Create Article' => '',
     'Create Section' => '',
-    'Data is already expired' => '',
     'Delete' => '',
     'Edit sections' => '',
     'ID' => '',
-    'Logout (i' => '',
+    'Logout' => '',
     'Parent' => '',
     'Preview' => '',
     'Reset' => '',
@@ -54,4 +53,5 @@ return [
     'Сортировка' => '',
     'Статус активности' => '',
     'Уникальное название раздела' => '',
+    'Data is already expired' => '@@Data is already expired@@',
 ];
