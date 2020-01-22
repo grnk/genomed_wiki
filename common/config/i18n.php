@@ -10,17 +10,12 @@
  * template configuration file with detailed description for each parameter.
  */
 return [
-    'color' => null,
-    'interactive' => true,
-    'help' => null,
-    'sourcePath' =>  __DIR__. DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR,
-    'messagePath' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'messages',
+    'sourcePath' =>  __DIR__. DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR,
     'languages' => ['ru-RU', 'en-US'],
     'translator' => 'Yii::t',
     'sort' => false,
-    'overwrite' => true,
     'removeUnused' => false,
-    'markUnused' => true,
+    'only' => ['*.php'],
     'except' => [
         '.svn',
         '.git',
@@ -29,17 +24,11 @@ return [
         '.hgignore',
         '.hgkeep',
         '/messages',
-        '/BaseYii.php',
+        '/vendor',
     ],
-    'only' => [
-        '*.php',
-    ],
-    'format' => 'php',
-    'db' => 'db',
-    'sourceMessageTable' => '{{%source_message}}',
-    'messageTable' => '{{%message}}',
-    'catalog' => 'messages',
-    'ignoreCategories' => [],
-    'phpFileHeader' => '',
-    'phpDocBlock' => null,
+    'color' => null,
+    'interactive' => true,
+    'help' => null,
+    'messagePath' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'messages',
+    'overwrite' => true,
 ];
