@@ -61,10 +61,7 @@ use common\models\Article;
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'date' => $this->date,
             'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
@@ -73,6 +70,9 @@ use common\models\Article;
             ->andFilterWhere(['like', 'meta_keywords', $this->meta_keywords])
             ->andFilterWhere(['like', 'preview_text', $this->preview_text])
             ->andFilterWhere(['like', 'preview_image', $this->preview_image])
+            ->andFilterWhere(['like', 'created_at', $this->created_at])
+            ->andFilterWhere(['like', 'updated_at', $this->updated_at])
+            ->andFilterWhere(['like', 'date', $this->date])
             ->andFilterWhere(['like', 'slug', $this->slug]);
 
         return $dataProvider;
@@ -100,10 +100,7 @@ use common\models\Article;
 
          $query->andFilterWhere([
              'id' => $this->id,
-             'date' => $this->date,
              'status' => $this->status,
-             'created_at' => $this->created_at,
-             'updated_at' => $this->updated_at,
          ]);
 
          $query->andFilterWhere(['like', 'title', $this->title])
@@ -112,6 +109,9 @@ use common\models\Article;
              ->andFilterWhere(['like', 'meta_keywords', $this->meta_keywords])
              ->andFilterWhere(['like', 'preview_text', $this->preview_text])
              ->andFilterWhere(['like', 'preview_image', $this->preview_image])
+             ->andFilterWhere(['like', 'created_at', $this->created_at])
+             ->andFilterWhere(['like', 'updated_at', $this->updated_at])
+             ->andFilterWhere(['like', 'date', $this->date])
              ->andFilterWhere(['like', 'slug', $this->slug]);
 
          return $dataProvider;
