@@ -4,9 +4,15 @@
 namespace backend\controllers;
 
 
+use common\models\Article;
+use common\models\components\UploadFile;
+use DateTime;
 use Yii;
+use yii\helpers\Inflector;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 class FileController extends Controller
 {
@@ -101,7 +107,7 @@ class FileController extends Controller
      */
     public function getUnic_file_name()
     {
-        $dateFile = new \DateTime();
+        $dateFile = new DateTime();
         return md5($dateFile->format('Y-m-d H:i:s') . rand(0, 10000));
     }
 
@@ -113,5 +119,48 @@ class FileController extends Controller
     public function out()
     {
         return ['error'=>$this->error, $this->error_type,'msg'=>$this->msg, 'data'=> ($this->error=='no') ? $this->data : '' ];
+    }
+
+    public function actionFileUpload()
+    {
+
+        $model = new Article();
+        $file = UploadedFile::getInstance($model, 'upload_files');
+
+        $uploadFile = new UploadFile([
+            'uploadedFile' => $file,
+            'folderSave' => 'article',
+        ]);
+        $uploadFile->nameFile = $this->getNameForUpload($uploadFile, $file);
+
+        $uploadFile->upload();
+
+        if($uploadFile->upload()){
+            return Json::encode([
+                'preview_image' => $uploadFile->nameFile,
+            ]);
+        }
+
+        return Json::encode([
+            'error' => $uploadFile->getErrorUpload(),
+        ]);
+    }
+
+    /**
+     * @param UploadFile $modelUpload
+     * @param UploadedFile $file
+     * @return string
+     */
+    private function getNameForUpload($modelUpload, $file)
+    {
+        $nameFile =  Inflector::slug($file->getBaseName()) . '.' . $file->getExtension();
+
+        while ($modelUpload->issetFile($nameFile)) {
+            $nameFile = Inflector::slug($file->getBaseName())
+                . '_' . date('y-m-d', time()) . '_'  . rand(0, 999)
+                . '.' . $file->getExtension();
+        }
+
+        return  $nameFile;
     }
 }

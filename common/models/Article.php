@@ -3,12 +3,18 @@
 namespace common\models;
 
 use \common\models\base\Article as BaseArticle;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "article".
  */
 class Article extends BaseArticle
 {
+
+    /**
+     * @var UploadedFile
+     */
+    public $upload_files;
 
     const ARTICLE_ACTIVE = 1;
     const ARTICLE_inactive = 0;
