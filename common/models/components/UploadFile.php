@@ -48,7 +48,7 @@ class UploadFile extends Model
     }
 
     public function getPathSave(){
-        $path = Yii::getAlias('@backend/web/files/upload') . DIRECTORY_SEPARATOR . $this->folderSave;
+        $path = Yii::getAlias('@files/upload') . DIRECTORY_SEPARATOR . $this->folderSave;
         /** Проверка существования папки */
         if(!is_dir($path)){
             mkdir($path, 0777, true);

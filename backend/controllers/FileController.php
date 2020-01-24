@@ -123,13 +123,12 @@ class FileController extends Controller
 
     public function actionFileUpload()
     {
-
         $model = new Article();
         $file = UploadedFile::getInstance($model, 'upload_files');
 
         $uploadFile = new UploadFile([
             'uploadedFile' => $file,
-            'folderSave' => 'article',
+            'folderSave' => 'article-image-preview',
         ]);
         $uploadFile->nameFile = $this->getNameForUpload($uploadFile, $file);
 

@@ -71,15 +71,28 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
         'hintOptions' => ['style' => 'display: none;'],
     ])->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'preview_text')->textarea(['rows' => 3]) ?>
+    <?php echo $form->field($model, 'preview_text',[
+        'hintOptions' => ['style' => 'display: none;'],
+    ])->textarea(['rows' => 3]) ?>
 
     <?php echo $form->field($model, 'preview_image', [
-//        'options' => [
-//            'style' => 'display:none'
-//        ]
+        'options' => [
+            'style' => 'display:none'
+        ],
     ]); ?>
 
-    <?php echo $form->field($model, 'upload_files')->widget(FileInput::class, [
+    <div>
+        <label class="control-label" for="">Загруженное Изображение для вывода в превью статьи</label>
+        <div>
+            <?php echo Html::img($model->getUrlArticleImagePreview(), ['width' => '70px']) ?>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <?php echo $form->field($model, 'upload_files',[
+        'hintOptions' => ['style' => 'display: none;'],
+    ])->widget(FileInput::class, [
     'options' => [
         'multiple' => false,
     ],
