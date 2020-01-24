@@ -2,13 +2,21 @@
 
 namespace common\models;
 
+use common\assets\LoadedFilesAsset;
 use \common\models\base\Article as BaseArticle;
+use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "article".
  */
 class Article extends BaseArticle
 {
+
+    /**
+     * @var UploadedFile
+     */
+    public $upload_files;
 
     const ARTICLE_ACTIVE = 1;
     const ARTICLE_inactive = 0;
@@ -44,6 +52,7 @@ class Article extends BaseArticle
             'preview_text' => 'Текст для вывода в превью статьи',
             'preview_image' => ' Изображение для вывода в превью статьи',
             'slug' => 'Уникальное название статьи',
+            'upload_files' => 'Загрузить изображение для превью',
         ];
     }
 
@@ -91,5 +100,23 @@ class Article extends BaseArticle
     public function deleteAllSectionArticle()
     {
         SectionArticle::deleteAll('article_id = ' . $this->id);
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrlArticleImagePreview()
+    {
+        return $this->getBaseUrl() . '/article-image-preview/' . $this->preview_image;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getBaseUrl()
+    {
+        $assetBundle = LoadedFilesAsset::register(Yii::$app->view);
+
+        return $assetBundle->baseUrl;
     }
 }

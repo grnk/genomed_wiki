@@ -1,13 +1,18 @@
 <?php
 use yii\helpers\Html;
 use kartik\tabs\TabsX;
-$items = [
-    [
-        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Preview')),
-        'content' => $this->render('_view', [
-            'model' => $model,
-        ]),
-    ],
+
+echo $this->render('_view', [
+    'model' => $model,
+]);
+
+//$items = [
+//    [
+//        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Preview')),
+//        'content' => $this->render('_view', [
+//            'model' => $model,
+//        ]),
+//    ],
 //    [
 //        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode(Yii::t('app', 'Article')),
 //        'content' => $this->render('_detail', [
@@ -21,16 +26,16 @@ $items = [
 //            'row' => $model->sectionArticles,
 //        ]),
 //    ],
-    ];
-echo TabsX::widget([
-    'items' => $items,
-    'position' => TabsX::POS_ABOVE,
-    'encodeLabels' => false,
-    'class' => 'tes',
-    'pluginOptions' => [
-        'bordered' => true,
-        'sideways' => true,
-        'enableCache' => false
-    ],
-]);
+//];
+//echo TabsX::widget([
+//    'items' => $items,
+//    'position' => TabsX::POS_ABOVE,
+//    'encodeLabels' => false,
+//    'class' => 'tes',
+//    'pluginOptions' => [
+//        'bordered' => true,
+//        'sideways' => true,
+//        'enableCache' => false
+//    ],
+//]);
 ?>

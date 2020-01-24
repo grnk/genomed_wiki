@@ -1,9 +1,11 @@
 <?php
 
+use kartik\widgets\FileInput;
 use mootensai\components\JsBlock;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\ActiveForm;
 use mihaildev\elfinder\ElFinder;
@@ -69,9 +71,45 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
         'hintOptions' => ['style' => 'display: none;'],
     ])->textInput(['maxlength' => true]) ?>
 
-    <?php /*echo $form->field($model, 'preview_text')->textarea(['rows' => 6])*/ ?>
+    <?php echo $form->field($model, 'preview_text',[
+        'hintOptions' => ['style' => 'display: none;'],
+    ])->textarea(['rows' => 3]) ?>
 
-    <?php /*echo $form->field($model, 'preview_image')->textarea(['rows' => 6])*/ ?>
+    <?php echo $form->field($model, 'preview_image', [
+        'options' => [
+            'style' => 'display:none'
+        ],
+    ]); ?>
+
+    <div>
+        <label class="control-label" for="">Загруженное Изображение для вывода в превью статьи</label>
+        <div>
+            <?php echo Html::img($model->getUrlArticleImagePreview(), ['width' => '70px']) ?>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <?php echo $form->field($model, 'upload_files',[
+        'hintOptions' => ['style' => 'display: none;'],
+    ])->widget(FileInput::class, [
+    'options' => [
+        'multiple' => false,
+    ],
+    'pluginOptions' => [
+        'maxFileCount' => 1,
+        'previewFileType' => 'any',
+        'uploadUrl' => Url::to(['/file/file-upload']),
+        'allowedFileExtensions'=>['jpg','png']
+    ],
+    'pluginEvents' => [
+        'fileuploaded' => 'function(event, data, previewId, index){'
+            . 'var inputPreviewImage = $("#article-preview_image");'
+            . 'inputPreviewImage.val(data.response.preview_image);'
+            . 'console.log(data, inputPreviewImage);'
+            . '}',
+    ],
+    ]); ?>
 
     <?php /*echo $form->field($model, 'slug')->textInput(['maxlength' => true, 'placeholder' => 'Slug'])*/ ?>
 
