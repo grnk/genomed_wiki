@@ -1,4 +1,6 @@
 <?php
+
+use kartik\nav\NavX;
 use yii\helpers\Html;
 
 /* @var $this \yii\web\View */
@@ -14,7 +16,31 @@ use yii\helpers\Html;
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
-
+        <div class="main-menu">
+        <?php
+            echo NavX::widget([
+                'options'=>['class'=>'nav nav-pills'],
+                'items' => [
+                    ['label' => 'Action', 'url' => '#'],
+                    ['label' => 'Submenu 1', 'active'=>true, 'items' => [
+                        ['label' => 'Action', 'url' => '#'],
+                        ['label' => 'Another action', 'url' => '#'],
+                        ['label' => 'Something else here', 'url' => '#'],
+                        '<div class="dropdown-divider"></div>',
+                        ['label' => 'Submenu 2', 'items' => [
+                            ['label' => 'Action', 'url' => '#'],
+                            ['label' => 'Another action', 'url' => '#'],
+                            ['label' => 'Something else here', 'url' => '#'],
+                            '<div class="dropdown-divider"></div>',
+                            ['label' => 'Separated link', 'url' => '#'],
+                        ]],
+                    ]],
+                    ['label' => 'My Link', 'url' => '#'],
+                    ['label' => 'Disabled', 'linkOptions' => ['class' => 'disabled'], 'url' => '#'],
+                ]
+            ]);
+            ?>
+        </div>
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
