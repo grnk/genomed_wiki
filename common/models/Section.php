@@ -66,9 +66,10 @@ class Section extends BaseSection
 
     /**
      * @param null $parent_id
+     * @param int $level
      * @return array
      */
-    public static function getItemsSectionForMainMenu($parent_id = null)
+    public static function getItemsSectionForMainMenu($parent_id = null, $level = 1)
     {
         $items = [];
         $sections = Section::find()
@@ -81,7 +82,8 @@ class Section extends BaseSection
                 'label' => $section->title,
                 'active'=>true,
                 'url' => $section->getUrl(),
-                'items' => static::getItemsSectionForMainMenu($section->id),
+                'items' => static::getItemsSectionForMainMenu($section->id, $level + 1),
+                'options' => ['data-level' => $level],
             ];
         }
 

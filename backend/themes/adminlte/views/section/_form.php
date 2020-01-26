@@ -59,7 +59,7 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
 
     <?= $form->field($model, 'status', [
         'hintOptions' => ['style' => 'display: none;'],
-    ])->textInput(['value' => '1']) ?>
+    ])->textInput() ?>
 
     <?= $form->field($model, 'meta_description', [
         'hintOptions' => ['style' => 'display: none;'],
