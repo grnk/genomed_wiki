@@ -65,6 +65,30 @@ class Section extends BaseSection
     }
 
     /**
+     * @param null $parent_id
+     * @return array
+     */
+    public static function getItemsSectionForMainMenu($parent_id = null)
+    {
+        $items = [];
+        $sections = Section::find()
+            ->orderBy('order')
+            ->andWhere(['status' => 10])
+            ->andWhere(['parent_id' => $parent_id])
+            ->all();
+        foreach ($sections as $section) {
+            $items[] = [
+                'label' => $section->title,
+                'active'=>true,
+                'url' => $section->getUrl(),
+                'items' => static::getItemsSectionForMainMenu($section->id),
+            ];
+        }
+
+        return $items;
+    }
+
+    /**
      * Удаляет все SectionArticle
      */
     public function deleteAllSectionArticle()
