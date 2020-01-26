@@ -1,5 +1,6 @@
 <?php
 
+use common\classes\MainMenu;
 use kartik\nav\NavX;
 use yii\helpers\Html;
 
@@ -18,26 +19,26 @@ use yii\helpers\Html;
         </a>
         <div class="main-menu">
         <?php
-            echo NavX::widget([
+            echo MainMenu::widget([
                 'options'=>['class'=>'nav nav-pills'],
-                'items' => [
-                    ['label' => 'Action', 'url' => '#'],
-                    ['label' => 'Submenu 1', 'active'=>true, 'items' => [
-                        ['label' => 'Action', 'url' => '#'],
-                        ['label' => 'Another action', 'url' => '#'],
-                        ['label' => 'Something else here', 'url' => '#'],
-                        '<div class="dropdown-divider"></div>',
-                        ['label' => 'Submenu 2', 'items' => [
-                            ['label' => 'Action', 'url' => '#'],
-                            ['label' => 'Another action', 'url' => '#'],
-                            ['label' => 'Something else here', 'url' => '#'],
-                            '<div class="dropdown-divider"></div>',
-                            ['label' => 'Separated link', 'url' => '#'],
-                        ]],
-                    ]],
-                    ['label' => 'My Link', 'url' => '#'],
-                    ['label' => 'Disabled', 'linkOptions' => ['class' => 'disabled'], 'url' => '#'],
-                ]
+//                'items' => [
+//                    ['label' => 'Action', 'url' => '#'],
+//                    ['label' => 'Submenu 1', 'active'=>true, 'items' => [
+//                        ['label' => 'Action', 'url' => '#'],
+//                        ['label' => 'Another action', 'url' => '#'],
+//                        ['label' => 'Something else here', 'url' => '#'],
+//                        '<div class="dropdown-divider"></div>',
+//                        ['label' => 'Submenu 2', 'items' => [
+//                            ['label' => 'Action', 'url' => '#'],
+//                            ['label' => 'Another action', 'url' => '#'],
+//                            ['label' => 'Something else here', 'url' => '#'],
+//                            '<div class="dropdown-divider"></div>',
+//                            ['label' => 'Separated link', 'url' => '#'],
+//                        ]],
+//                    ]],
+//                    ['label' => 'My Link', 'url' => '#'],
+//                    ['label' => 'Disabled', 'linkOptions' => ['class' => 'disabled'], 'url' => '#'],
+//                ]
             ]);
             ?>
         </div>
