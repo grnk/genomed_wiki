@@ -19,3 +19,7 @@
     width: auto !important;
 }
 /*Правка вёртски для левого меню*/
+
+.main-menu {
+    float: left;
+}
