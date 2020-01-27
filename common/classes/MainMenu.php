@@ -17,7 +17,6 @@ class MainMenu extends NavX
 
     public function getItems()
     {
-
         return Section::getItemsSectionForMainMenu();
 
 //        dd(Section::getItemsSectionForMainMenu());

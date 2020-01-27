@@ -80,7 +80,6 @@ class Section extends BaseSection
         foreach ($sections as $section) {
             $items[] = [
                 'label' => $section->title,
-                'active'=>true,
                 'url' => $section->getUrl(),
                 'items' => static::getItemsSectionForMainMenu($section->id, $level + 1),
                 'options' => ['data-level' => $level],
