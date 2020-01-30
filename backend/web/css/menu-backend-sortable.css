@@ -1,0 +1,41 @@
+/*.connectedSortable{float:left; list-style-type:none; margin:0 20px 0 0; padding:0; width:35%;}*/
+/*.connectedSortable item{margin:3px; padding:0.4em; background-color:#fff; border:1px solid #888}*/
+
+.sortable-section {
+    width: 170px;
+    float: left;
+    background-color: #c0ffa2;
+    margin-right: 70px;
+}
+
+.item {
+    margin: 2px;
+    padding: 0.3em;
+}
+
+.item-header {
+    /*padding: 0.2em 0.3em;*/
+    /*margin-bottom: 0.5em;*/
+    /*margin-top: 0.5em;*/
+    position: relative;
+}
+
+.item-body {
+    padding: 0.4em;
+}
+
+.item-placeholder {
+    border: 1px dotted black;
+    margin: 0 1em 1em 0;
+    height: 30px;
+}
+
+.item-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+}
+.connectedSortable {
+     min-height: 30px !important;
+}
