@@ -22,8 +22,27 @@ $( document ).ready(function() {
     // обработка события update
     $(".sortable-section").sortable({
         update: function(event, ui) {
-            // console.log(this);
-            console.log(ui);
+            //console.log(this);
+            //console.log(event);
+            var section = $(this);
+            var children = section.children();
+            console.log("data-item-id = " + section.attr("data-item-id"));
+            // console.log(section.children());
+
+            var childrenIds = [];
+            children.each(function () {
+                childrenIds[childrenIds.length] = $(this).attr("data-id");
+            });
+            console.log("children array = " + childrenIds);
+
+            var data_send = {"section-id" : section.attr("data-item-id"), 'item-ids' : childrenIds};
+            $.ajax({
+                url: "menu/update",
+                type: 'POST',
+                dataType: 'JSON',
+                data: data_send,
+                cache: false,
+            });
         }
     });
 });
