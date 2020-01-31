@@ -1,8 +1,6 @@
 <?php
 
-
 namespace common\classes;
-
 
 use common\models\Section;
 
@@ -29,11 +27,15 @@ class SectionUpdater
 
     private function parentUpdate()
     {
-        return 'parentUpdate';
+        foreach ($this->items as $sectionId) {
+            $modelSection = Section::find()->andWhere(['id' => $sectionId])->one();
+            $modelSection->parent_id = $this->parentId;
+            $modelSection->update();
+        }
     }
 
     public function update()
     {
-        return $this->sort() . ' ' . $this->parentUpdate();
+        $this->parentUpdate();
     }
 }

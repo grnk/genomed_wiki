@@ -5,8 +5,9 @@ namespace backend\controllers;
 use common\classes\SectionUpdater;
 use common\models\Section;
 use Yii;
+use yii\web\Controller;
 
-class MenuController extends \yii\web\Controller
+class MenuController extends Controller
 {
     public function actionIndex()
     {
@@ -15,14 +16,17 @@ class MenuController extends \yii\web\Controller
 
     public function actionUpdate()
     {
-        dd(Yii::$app->request->post());
         $changesData = [];
         if (Yii::$app->request->isPost) {
             $changesData = Yii::$app->request->post();
         }
-        foreach ($changesData as $change) {
-            $sectionUpdater = new SectionUpdater('');
-        }
+
+        $sectionUpdater = new SectionUpdater(
+            $changesData['section-id'] === '0' ? null : $changesData['section-id'],
+            isset($changesData['item-ids']) ? $changesData['item-ids'] : []
+        );
+
+        $sectionUpdater->update();
 
         return true;
     }
