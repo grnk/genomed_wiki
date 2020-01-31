@@ -22,7 +22,13 @@ class SectionUpdater
 
     private function sort()
     {
-        return 'sort';
+        $order = 100;
+        foreach ($this->items as $sectionId) {
+            $modelSection = Section::find()->andWhere(['id' => $sectionId])->one();
+            $modelSection->order = $order;
+            $modelSection->update();
+            $order += 100;
+        }
     }
 
     private function parentUpdate()
@@ -37,5 +43,6 @@ class SectionUpdater
     public function update()
     {
         $this->parentUpdate();
+        $this->sort();
     }
 }
