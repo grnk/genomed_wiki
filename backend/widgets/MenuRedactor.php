@@ -4,6 +4,7 @@ namespace backend\widgets;
 
 use yii\base\Widget;
 use yii\helpers\Html;
+use yii\web\AssetBundle;
 
 class MenuRedactor extends Widget
 {
@@ -17,6 +18,8 @@ class MenuRedactor extends Widget
 
     public function run()
     {
+        MenuRedactorAsset::register($this->view);
+
         return $this->renderItems();
     }
 
@@ -43,10 +46,6 @@ class MenuRedactor extends Widget
         $parentId = '';
         $items = '';
 
-        return Html::tag('div', implode("\n", $items), [
-            'class' => 'sortable-section connectedSortable',
-            'data' => [
-                'item-id' => '0',
-            ],
+        return 'item';
     }
 }
