@@ -89,6 +89,11 @@ class Section extends BaseSection
         return $items;
     }
 
+    public static function getItemsSection()
+    {
+        
+    }
+
     /**
      * Удаляет все SectionArticle
      */

@@ -2,6 +2,30 @@
 /* @var $this yii\web\View */
 ?>
 
+<?= \backend\widgets\MenuRedactor::widget(['items' => [
+        [
+            'id' => 200,
+            'title' => 'Раздел 1 тест',
+            'order' => '123',
+            'parent_id' => null,
+            'items' => [],
+        ],
+        [
+            'id' => 201,
+            'title' => 'Раздел 2 тест',
+            'order' => '123',
+            'parent_id' => null,
+            'items' => [],
+        ],
+        [
+            'id' => 202,
+            'title' => 'Раздел 3 тест',
+            'order' => '123',
+            'parent_id' => null,
+            'items' => [],
+        ],
+    ]]) ?>
+
 <div class="sortable-section connectedSortable" data-item-id="0">
 
     <div class="item" data-id="201" data-order="1" data-parent-id="0">
