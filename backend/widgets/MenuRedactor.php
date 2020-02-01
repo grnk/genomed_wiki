@@ -20,32 +20,37 @@ class MenuRedactor extends Widget
     {
         MenuRedactorAsset::register($this->view);
 
-        return $this->renderItems();
+        return $this->renderWrapper();
     }
 
-    public function renderItems()
+    public function renderItems($items)
     {
-        $items = [];
-        foreach ($this->items as $i => $item) {
-            $items[] = $this->renderItem($item);
+        $resultsItems = [];
+        foreach ($items as $i => $item) {
+            $resultsItems[] = $this->renderItem($item);
         }
 
-        return Html::tag('div', implode("\n", $items), [
+        return implode("\n", $resultsItems);
+    }
+
+    public function renderItem($item)
+    {
+        return $this->render('menu-redactor/item', [
+            'id' => $item['id'],
+            'title' => $item['title'],
+            'order' => $item['order'],
+            'parentId' => $item['parentId'],
+            'htmlItems' => $this->renderItems($item['items']),
+        ]);
+    }
+
+    public function renderWrapper()
+    {
+        return Html::tag('div', $this->renderItems($this->items) , [
             'class' => 'sortable-section connectedSortable',
             'data' => [
                 'item-id' => '0',
             ],
         ]);
-    }
-
-    public function renderItem($item)
-    {
-        $id = '';
-        $title = '';
-        $order = '';
-        $parentId = '';
-        $items = '';
-
-        return 'item';
     }
 }
