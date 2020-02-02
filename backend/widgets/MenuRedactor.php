@@ -2,6 +2,7 @@
 
 namespace backend\widgets;
 
+use common\models\Section;
 use yii\base\Widget;
 use yii\helpers\Html;
 use yii\web\AssetBundle;
@@ -14,6 +15,7 @@ class MenuRedactor extends Widget
     {
         parent::init();
         //
+        $this->items = $this->getItems();
     }
 
     public function run()
@@ -21,6 +23,11 @@ class MenuRedactor extends Widget
         MenuRedactorAsset::register($this->view);
 
         return $this->renderWrapper();
+    }
+
+    private function getItems()
+    {
+        return Section::getItemsSectionForMenuRedactor();
     }
 
     public function renderItems($items)
