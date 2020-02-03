@@ -89,6 +89,28 @@ class Section extends BaseSection
         return $items;
     }
 
+    public static function getItemsSectionForMenuRedactor($parent_id = null, $level = 1)
+    {
+        $items = [];
+        $sections = Section::find()
+            ->orderBy('order')
+            ->andWhere(['status' => 10])
+            ->andWhere(['parent_id' => $parent_id])
+            ->all();
+        foreach ($sections as $section) {
+            $items[] = [
+                'id' => $section->id,
+                'title' => $section->title,
+                'order' => $section->order,
+                'parentId' => $section->parent_id,
+                'items' => static::getItemsSectionForMenuRedactor($section->id, $level + 1),
+//                'options' => ['data-level' => $level],
+            ];
+        }
+
+        return $items;
+    }
+
     /**
      * Удаляет все SectionArticle
      */
