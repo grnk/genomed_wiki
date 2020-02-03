@@ -32,6 +32,7 @@ use common\models\Section;
 
         <?php
         $items = [
+            ['label' => Yii::t('app', 'Edit menu'), 'url' => ['/menu/index']],
             ['label' => Yii::t('app', 'Edit sections'), 'url' => ['/section/index']],
             ['label' => Yii::t('app', 'All articles'), 'url' => ['/article/articles']],
             [
