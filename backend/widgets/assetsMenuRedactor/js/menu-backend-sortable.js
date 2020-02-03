@@ -37,7 +37,7 @@ $( document ).ready(function() {
 
             var data_send = {"section-id" : section.attr("data-item-id"), 'item-ids' : childrenIds};
             $.ajax({
-                url: "menu/update",
+                url: "/menu/update",
                 type: 'POST',
                 dataType: 'JSON',
                 data: data_send,
