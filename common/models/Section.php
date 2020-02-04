@@ -74,7 +74,6 @@ class Section extends BaseSection
         $items = [];
         $sections = Section::find()
             ->orderBy('order')
-            ->andWhere(['status' => 10])
             ->andWhere(['parent_id' => $parent_id])
             ->all();
         foreach ($sections as $section) {
@@ -94,7 +93,6 @@ class Section extends BaseSection
         $items = [];
         $sections = Section::find()
             ->orderBy('order')
-//            ->andWhere(['status' => 10])
             ->andWhere(['parent_id' => $parent_id])
             ->all();
         foreach ($sections as $section) {
