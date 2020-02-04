@@ -1,38 +1,23 @@
-/*.connectedSortable{float:left; list-style-type:none; margin:0 20px 0 0; padding:0; width:35%;}*/
-/*.connectedSortable item{margin:3px; padding:0.4em; background-color:#fff; border:1px solid #888}*/
-
 .sortable-section {
     width: 400px;
     float: left;
-    background-color: #c0ffa2;
     margin-right: 70px;
     display: flex;
     flex-direction: column;
+    background-color: #ffc1c5;
 }
 
 .item {
-    /*margin: 2px;*/
     padding: 5px 15px 5px 15px;
 }
 
-.item > .item {
-    background-color: #0f74a8;
-}
-
 .item-header {
-    /*padding: 0.2em 0.3em;*/
-    /*margin-bottom: 0.5em;*/
-    /*margin-top: 0.5em;*/
     position: relative;
-}
-
-.item-body {
-    /*padding: 0.4em;*/
+    border-color: black;
 }
 
 .item-placeholder {
     border: 1px dotted black;
-    /*margin: 0 1em 1em 0;*/
     height: 25px;
 }
 
@@ -45,3 +30,15 @@
 .connectedSortable {
      min-height: 25px !important;
 }
+
+.section-level-0 {background-color: #c0ffa2}
+.section-level-0 > .item .item-header {background-color: #c0ffa2}
+
+.section-level-1 {background-color: #99deff}
+.section-level-1 > .item .item-header {background-color: #99deff}
+
+.section-level-2 {background-color: #e6ccff}
+.section-level-2 > .item .item-header {background-color: #e6ccff}
+
+.section-level-3 {background-color: #ffc1c5}
+.section-level-3 > .item .item-header {background-color: #ffc1c5}
