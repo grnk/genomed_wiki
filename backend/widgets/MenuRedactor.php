@@ -30,17 +30,17 @@ class MenuRedactor extends Widget
         return Section::getItemsSectionForMenuRedactor();
     }
 
-    public function renderItems($items)
+    public function renderItems($items, $level = 1)
     {
         $resultsItems = [];
         foreach ($items as $i => $item) {
-            $resultsItems[] = $this->renderItem($item);
+            $resultsItems[] = $this->renderItem($item, $level);
         }
 
         return implode("\n", $resultsItems);
     }
 
-    public function renderItem($item)
+    public function renderItem($item, $level)
     {
         return $this->render('menu-redactor/item', [
             'id' => $item['id'],
@@ -48,13 +48,14 @@ class MenuRedactor extends Widget
             'order' => $item['order'],
             'parentId' => $item['parentId'],
             'htmlItems' => $this->renderItems($item['items']),
+            'sectionLevel' => $item['level'],
         ]);
     }
 
     public function renderWrapper()
     {
         return Html::tag('div', $this->renderItems($this->items) , [
-            'class' => 'sortable-section connectedSortable',
+            'class' => 'sortable-section connectedSortable section-level-0',
             'data' => [
                 'item-id' => '0',
             ],

@@ -102,7 +102,7 @@ class Section extends BaseSection
                 'order' => $section->order,
                 'parentId' => $section->parent_id,
                 'items' => static::getItemsSectionForMenuRedactor($section->id, $level + 1),
-//                'options' => ['data-level' => $level],
+                'level' =>  $level,
             ];
         }
 
