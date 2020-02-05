@@ -56,6 +56,17 @@ if (Yii::$app->controller->action->id === 'login') {
             ['content' => $content, 'directoryAsset' => $directoryAsset]
         ) ?>
 
+        <?php
+        yii\bootstrap\Modal::begin([
+            'headerOptions' => ['id' => 'modalHeader'],
+            'id' => 'modal',
+            'size' => 'modal-lg',
+//            'closeButton' => false,
+        ]);
+        echo "<div id='backendModalContent'></div>";
+        yii\bootstrap\Modal::end();
+        ?>
+
     </div>
 
     <?php $this->endBody() ?>

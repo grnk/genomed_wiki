@@ -71,6 +71,15 @@ class SectionController extends Controller
         $providerSectionArticle = new ArrayDataProvider([
             'allModels' => $model->sectionArticles,
         ]);
+
+        if(Yii::$app->request->isAjax) {
+            return $this->renderAjax('view', [
+                'model' => $this->findModel($id),
+                'providerSection' => $providerSection,
+                'providerSectionArticle' => $providerSectionArticle,
+            ]);
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
             'providerSection' => $providerSection,
@@ -93,6 +102,10 @@ class SectionController extends Controller
             }
 
             return $this->redirect(['view', 'id' => $model->id]);
+        } elseif (Yii::$app->request->isAjax) {
+            return $this->renderAjax('create', [
+                'model' => $model,
+            ]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -118,6 +131,10 @@ class SectionController extends Controller
             }
 
             return $this->redirect(['view', 'id' => $model->id]);
+        } elseif (Yii::$app->request->isAjax){
+            return $this->renderAjax('update', [
+                'model' => $model,
+            ]);
         } else {
             return $this->render('update', [
                 'model' => $model,
