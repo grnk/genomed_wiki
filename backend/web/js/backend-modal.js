@@ -9,6 +9,6 @@ $( document ).ready(function() {
             find.html(data);
         });
         // document.getElementById('modalHeader').innerHTML = '<h4>' + $(this).attr('title') + '</h4>';
-        $('#modalHeader').prepend('<span>' + $(this).attr('title') + '</span>');
+        // $('#modalHeader').prepend('<span>' + $(this).attr('title') + '</span>');
     });
 });

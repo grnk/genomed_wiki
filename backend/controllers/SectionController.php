@@ -30,7 +30,7 @@ class SectionController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-section-article', 'add-section'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-section-article', 'add-section', 'update-ajax'],
                         'roles' => ['@']
                     ],
                     [
@@ -137,6 +137,25 @@ class SectionController extends Controller
             ]);
         } else {
             return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionUpdateAjax($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->deleteAllSectionArticle();
+            foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
+                $model->createSectionArticle($newSectionArticles['article_id'], $newSectionArticles['order']);
+            }
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+
+            return $this->renderAjax('update', [
                 'model' => $model,
             ]);
         }
