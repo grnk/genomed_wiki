@@ -30,7 +30,7 @@ class SectionController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-section-article', 'add-section'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-section-article', 'add-section', 'update-ajax'],
                         'roles' => ['@']
                     ],
                     [
@@ -71,6 +71,15 @@ class SectionController extends Controller
         $providerSectionArticle = new ArrayDataProvider([
             'allModels' => $model->sectionArticles,
         ]);
+
+        if(Yii::$app->request->isAjax) {
+            return $this->renderAjax('view', [
+                'model' => $this->findModel($id),
+                'providerSection' => $providerSection,
+                'providerSectionArticle' => $providerSectionArticle,
+            ]);
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
             'providerSection' => $providerSection,
@@ -93,8 +102,29 @@ class SectionController extends Controller
             }
 
             return $this->redirect(['view', 'id' => $model->id]);
+        } elseif (Yii::$app->request->isAjax) {
+            return $this->renderAjax('create', [
+                'model' => $model,
+            ]);
         } else {
             return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionCreateAjax()
+    {
+        $model = new Section();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
+                $model->createSectionArticle($newSectionArticles['article_id'], $newSectionArticles['order']);
+            }
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->renderAjax('createAjax', [
                 'model' => $model,
             ]);
         }
@@ -120,6 +150,25 @@ class SectionController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionUpdateAjax($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->deleteAllSectionArticle();
+            foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
+                $model->createSectionArticle($newSectionArticles['article_id'], $newSectionArticles['order']);
+            }
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+
+            return $this->renderAjax('updateAjax', [
                 'model' => $model,
             ]);
         }
