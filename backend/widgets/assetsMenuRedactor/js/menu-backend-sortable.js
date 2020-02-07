@@ -40,5 +40,21 @@ $( document ).ready(function() {
             });
         }
     });
+
+    $('#button-close-all').on("click", function () {
+        $('.item-header .action-buttons .glyphicon.item-toggle').each(function(i, elem) {
+            if($(this).hasClass("glyphicon-resize-small")) {
+                $(this).click();
+            }
+        });
+    });
+
+    $('#button-open-all').on("click", function () {
+        $('.item-header .action-buttons .glyphicon.item-toggle').each(function(i, elem) {
+            if($(this).hasClass("glyphicon-resize-full")) {
+                $(this).click();
+            }
+        });
+    });
 });
 

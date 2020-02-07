@@ -8,9 +8,18 @@ use backend\widgets\MenuRedactor;
 use yii\helpers\Html;
 use yii\helpers\Url; ?>
 
-<?= Html::button('view section', ['value' => Url::to(['section/view', 'id'=>203]), 'title' => 'view section', 'class' => 'showModalButton btn btn-success']); ?>
-<?= Html::button('create section', ['value' => Url::to(['section/create']), 'title' => 'create section', 'class' => 'showModalButton btn btn-success']); ?>
-<?= Html::button('update section', ['value' => Url::to(['section/update', 'id'=>203]), 'title' => 'update section', 'class' => 'showModalButton btn btn-success']); ?>
+<?= Html::button(Yii::t('app', 'Close all'), [
+    'value' => Url::to(['#']),
+    'title' => Yii::t('app', 'Close all'),
+    'class' => 'btn btn-success',
+    'id' => 'button-close-all'
+]); ?>
+<?= Html::button(Yii::t('app', 'Open all'), [
+    'value' => Url::to(['#']),
+    'title' => Yii::t('app', 'Open all'),
+    'class' => 'btn btn-info',
+    'id' => 'button-open-all'
+]); ?>
 
 <?= MenuRedactor::widget() ?>
 
