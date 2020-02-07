@@ -50,3 +50,7 @@
 
 .section-level-3 {background-color: #ffc1c5}
 .section-level-3 > .item .item-header {background-color: #ffc1c5}
+
+.action-buttons > span {
+    cursor: pointer;
+}
