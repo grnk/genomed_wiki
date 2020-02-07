@@ -113,6 +113,23 @@ class SectionController extends Controller
         }
     }
 
+    public function actionCreateAjax()
+    {
+        $model = new Section();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
+                $model->createSectionArticle($newSectionArticles['article_id'], $newSectionArticles['order']);
+            }
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->renderAjax('createAjax', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     /**
      * Updates an existing Section model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -131,10 +148,6 @@ class SectionController extends Controller
             }
 
             return $this->redirect(['view', 'id' => $model->id]);
-        } elseif (Yii::$app->request->isAjax){
-            return $this->renderAjax('update', [
-                'model' => $model,
-            ]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -155,7 +168,7 @@ class SectionController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
 
-            return $this->renderAjax('update', [
+            return $this->renderAjax('updateAjax', [
                 'model' => $model,
             ]);
         }
