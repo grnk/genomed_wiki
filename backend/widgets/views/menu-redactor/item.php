@@ -19,7 +19,7 @@ use yii\helpers\Url; ?>
         <span class="action-buttons">
             <?= Html::tag('span', '', [
                 'class' => 'glyphicon glyphicon-plus showModalButton',
-                'value' => Url::to(['section/create']),
+                'value' => Url::to(['section/create-ajax', 'parentId'=>$id]),
             ]); ?>
             <?= Html::tag('span', '', [
                 'class' => 'glyphicon glyphicon-pencil showModalButton',

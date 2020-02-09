@@ -30,7 +30,16 @@ class SectionController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-section-article', 'add-section', 'update-ajax'],
+                        'actions' => [
+                            'index',
+                            'view',
+                            'create',
+                            'update',
+                            'delete',
+                            'add-section-article',
+                            'add-section', 'update-ajax',
+                            'create-ajax'
+                        ],
                         'roles' => ['@']
                     ],
                     [
@@ -113,9 +122,11 @@ class SectionController extends Controller
         }
     }
 
-    public function actionCreateAjax()
+    public function actionCreateAjax($parentId)
     {
-        $model = new Section();
+        $model = new Section([
+            'parent_id' => $parentId,
+        ]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
