@@ -5,6 +5,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Section */
+/* @var $parentId int */
 
 $this->title = Yii::t('app', 'Create Section');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Sections'), 'url' => ['index']];
@@ -16,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_formAjax', [
         'model' => $model,
+        'parentId' => $parentId,
     ]) ?>
 
 </div>

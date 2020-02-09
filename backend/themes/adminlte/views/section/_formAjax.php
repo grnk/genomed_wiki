@@ -6,12 +6,14 @@ use mootensai\components\JsBlock;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Section */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $parentId int */
 
 JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
     'viewParams' => [
@@ -35,6 +37,12 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
 
     <?php $form = ActiveForm::begin([
         'id' => 'update-ajax-form',
+        'enableClientValidation' => false,
+        'options' => [
+            'data' => [
+                'url' => Url::to(['/section/create-ajax', 'parentId' => $parentId])
+            ],
+        ],
     ]); ?>
 
     <?= $form->errorSummary($model); ?>
