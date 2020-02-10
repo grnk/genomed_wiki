@@ -5,7 +5,6 @@ namespace backend\widgets;
 use common\models\Section;
 use yii\base\Widget;
 use yii\helpers\Html;
-use yii\web\AssetBundle;
 
 class MenuRedactor extends Widget
 {
@@ -60,5 +59,10 @@ class MenuRedactor extends Widget
                 'item-id' => '0',
             ],
         ]);
+    }
+
+    public function renderButtons()
+    {
+        return $this->render('menu-redactor/buttons');
     }
 }

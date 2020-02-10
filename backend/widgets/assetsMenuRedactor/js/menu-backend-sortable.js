@@ -19,6 +19,12 @@ $( document ).ready(function() {
         icon.closest( ".item" ).find( ".item-body" ).toggle();
     });
 
+    $('.item-header .action-buttons .glyphicon.item-toggle').each(function(i, elem) {
+        if($(this).hasClass("glyphicon-resize-small")) {
+            $(this).click();
+        }
+    });
+
     // обработка события update
     $(".sortable-section").sortable({
         update: function(event, ui) {

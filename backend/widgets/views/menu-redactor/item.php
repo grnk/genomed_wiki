@@ -20,14 +20,16 @@ use yii\helpers\Url; ?>
             <?= Html::tag('span', '', [
                 'class' => 'glyphicon glyphicon-plus showModalButton',
                 'value' => Url::to(['section/create-ajax', 'parentId'=>$id]),
+                'title' => Yii::t('app', 'Add Section'),
             ]); ?>
             <?php
-//            echo Html::tag('span', '', [
-//                'class' => 'glyphicon glyphicon-pencil showModalButton',
-//                'value' => Url::to(['section/update-ajax', 'id'=>$id]),
-//            ]);
+            echo Html::tag('span', '', [
+                'class' => 'glyphicon glyphicon-pencil showModalButton',
+                'value' => Url::to(['section/update-ajax', 'id'=>$id]),
+                'title' => Yii::t('app', 'Edit Section'),
+            ]);
             ?>
-            <span class='glyphicon glyphicon-resize-small item-toggle'></span>
+            <span title="<?= Yii::t('app', 'Expand') ?>" class='glyphicon glyphicon-resize-small item-toggle'></span>
         </span>
         <?= $title ?>
     </div>
