@@ -155,4 +155,13 @@ class Section extends BaseSection
         ]))->save();
     }
 
+    public function getParentTitle()
+    {
+        if($this->parent_id === null) {
+            return 'Main';
+        }
+        $parentSection = Section::findOne(['id' => $this->parent_id]);
+
+        return $parentSection->title;
+    }
 }

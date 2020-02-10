@@ -30,7 +30,17 @@ class SectionController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-section-article', 'add-section', 'update-ajax'],
+                        'actions' => [
+                            'index',
+                            'view',
+                            'create',
+                            'update',
+                            'delete',
+                            'add-section-article',
+                            'add-section',
+                            'update-ajax',
+                            'create-ajax',
+                        ],
                         'roles' => ['@']
                     ],
                     [
@@ -113,19 +123,25 @@ class SectionController extends Controller
         }
     }
 
-    public function actionCreateAjax()
+    public function actionCreateAjax($parentId)
     {
-        $model = new Section();
+        $model = new Section([
+            'parent_id' => $parentId,
+            'order' => 1,
+            'status' => 1,
+        ]);
+
+        $result = [
+            'close' => 'close',
+            'message' => 'Раздел создан',
+        ];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
-                $model->createSectionArticle($newSectionArticles['article_id'], $newSectionArticles['order']);
-            }
-
-            return $this->redirect(['view', 'id' => $model->id]);
+            return implode('', $result);
         } else {
             return $this->renderAjax('createAjax', [
                 'model' => $model,
+                'parentId' => $parentId,
             ]);
         }
     }
