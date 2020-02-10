@@ -29,7 +29,9 @@ $( document ).ready(function() {
         }).done(function(data) {
             if(data.substr(0, 5) === 'close') {
                 // find.html(data);
-                find.html('Раздел создан');
+                // find.html('Раздел создан');
+                console.log('Раздел создан');
+                location.reload();
             } else {
                 find.html(data);
             }
