@@ -28,7 +28,8 @@ $( document ).ready(function() {
             data: form.serialize(),
         }).done(function(data) {
             if(data.substr(0, 5) === 'close') {
-                find.html(data);
+                // find.html(data);
+                find.html('Раздел создан');
             } else {
                 find.html(data);
             }

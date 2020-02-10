@@ -21,10 +21,12 @@ use yii\helpers\Url; ?>
                 'class' => 'glyphicon glyphicon-plus showModalButton',
                 'value' => Url::to(['section/create-ajax', 'parentId'=>$id]),
             ]); ?>
-            <?= Html::tag('span', '', [
-                'class' => 'glyphicon glyphicon-pencil showModalButton',
-                'value' => Url::to(['section/update-ajax', 'id'=>$id]),
-            ]); ?>
+            <?php
+//            echo Html::tag('span', '', [
+//                'class' => 'glyphicon glyphicon-pencil showModalButton',
+//                'value' => Url::to(['section/update-ajax', 'id'=>$id]),
+//            ]);
+            ?>
             <span class='glyphicon glyphicon-resize-small item-toggle'></span>
         </span>
         <?= $title ?>
