@@ -1,12 +1,8 @@
 <?php
 
-/**
- * @var $this yii\web\View
- */
-
-use backend\widgets\MenuRedactor;
 use yii\helpers\Html;
-use yii\helpers\Url; ?>
+use yii\helpers\Url;
+?>
 
 <div id="menu-redactor-buttons">
     <?= Html::button(Yii::t('app', 'Create Section'), [
@@ -28,9 +24,3 @@ use yii\helpers\Url; ?>
         'id' => 'button-open-all'
     ]); ?>
 </div>
-
-
-<?= MenuRedactor::widget() ?>
-
-
-

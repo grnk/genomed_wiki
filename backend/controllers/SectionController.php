@@ -123,7 +123,7 @@ class SectionController extends Controller
         }
     }
 
-    public function actionCreateAjax($parentId)
+    public function actionCreateAjax($parentId = null)
     {
         $model = new Section([
             'parent_id' => $parentId,
