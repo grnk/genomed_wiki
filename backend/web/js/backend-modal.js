@@ -16,7 +16,7 @@ $( document ).ready(function() {
         // $('#modalHeader').prepend('<span>' + $(this).attr('title') + '</span>');
     });
 
-    $(document).on('submit', '#update-ajax-form', function(e){
+    $(document).on('submit', '#create-ajax-form', function(e){
         e.preventDefault();
         var form = $(this);
         var find = $('#backendModalContent');

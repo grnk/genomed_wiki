@@ -37,8 +37,9 @@ class SectionController extends Controller
                             'update',
                             'delete',
                             'add-section-article',
-                            'add-section', 'update-ajax',
-                            'create-ajax'
+                            'add-section',
+                            'update-ajax',
+                            'create-ajax',
                         ],
                         'roles' => ['@']
                     ],
@@ -126,6 +127,8 @@ class SectionController extends Controller
     {
         $model = new Section([
             'parent_id' => $parentId,
+            'order' => 1,
+            'status' => 1,
         ]);
 
         $result = [
@@ -134,10 +137,6 @@ class SectionController extends Controller
         ];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
-                $model->createSectionArticle($newSectionArticles['article_id'], $newSectionArticles['order']);
-            }
-
             return implode('', $result);
         } else {
             return $this->renderAjax('createAjax', [
