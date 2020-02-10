@@ -131,13 +131,8 @@ class SectionController extends Controller
             'status' => 1,
         ]);
 
-        $result = [
-            'close' => 'close',
-            'message' => 'Раздел создан',
-        ];
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return implode('', $result);
+            return 'close';
         } else {
             return $this->renderAjax('createAjax', [
                 'model' => $model,
@@ -176,12 +171,7 @@ class SectionController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->deleteAllSectionArticle();
-            foreach ($model->getNewSectionArticles(Yii::$app->request->post()) as $newSectionArticles) {
-                $model->createSectionArticle($newSectionArticles['article_id'], $newSectionArticles['order']);
-            }
-
-            return $this->redirect(['view', 'id' => $model->id]);
+            return 'close';
         } else {
 
             return $this->renderAjax('updateAjax', [

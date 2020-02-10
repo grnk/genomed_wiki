@@ -20,17 +20,33 @@ $( document ).ready(function() {
         e.preventDefault();
         var form = $(this);
         var find = $('#backendModalContent');
-        console.log(form);
         $.ajax({
             url: form.data('url'),
             type: 'POST',
-            // data: JSON.stringify($('#update-ajax-form input'))
             data: form.serialize(),
         }).done(function(data) {
-            if(data.substr(0, 5) === 'close') {
+            if(data === 'close') {
                 // find.html(data);
                 // find.html('Раздел создан');
-                console.log('Раздел создан');
+                location.reload();
+            } else {
+                find.html(data);
+            }
+        });
+    });
+
+    $(document).on('submit', '#update-ajax-form', function(e){
+        e.preventDefault();
+        var form = $(this);
+        var find = $('#backendModalContent');
+        $.ajax({
+            url: form.data('url'),
+            type: 'POST',
+            data: form.serialize(),
+        }).done(function(data) {
+            if(data === 'close') {
+                // find.html(data);
+                // find.html('Раздел создан');
                 location.reload();
             } else {
                 find.html(data);
