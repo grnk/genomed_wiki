@@ -52,10 +52,6 @@ JsBlock::widget(['viewFile' => '_script', 'pos'=> View::POS_END,
         'hintOptions' => ['style' => 'display: none;'],
     ])->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'order', [
-        'hintOptions' => ['style' => 'display: none;'],
-    ])->textInput([]) ?>
-
     <?= $form->field($model, 'status', [
         'hintOptions' => ['style' => 'display: none;'],
     ])->textInput() ?>
