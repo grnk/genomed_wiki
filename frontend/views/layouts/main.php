@@ -3,9 +3,8 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use frontend\widgets\FrontendMainMenu;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
@@ -37,8 +36,12 @@ AppAsset::register($this);
         </div>
 
         <div class="row" style="border: 2px solid black;">
-            <div class="col-md-12">
-                menu
+            <div class="frontend-main-menu">
+                <?php
+                echo FrontendMainMenu::widget([
+                    'options'=>['class'=>'nav nav-pills'],
+                ]);
+                ?>
             </div>
         </div>
 

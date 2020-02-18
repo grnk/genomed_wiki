@@ -88,6 +88,28 @@ class Section extends BaseSection
         return $items;
     }
 
+    public static function getItemsSectionForFrontendMainMenu($parent_id = null, $level = 1)
+    {
+        $items = [];
+        $sections = Section::find()
+            ->orderBy('order')
+            ->andWhere(['parent_id' => $parent_id])
+            ->all();
+        foreach ($sections as $section) {
+            if($level > 2) {
+                break;
+            }
+            $items[] = [
+                'label' => $section->title,
+                'url' => $section->getUrl(),
+                'items' => static::getItemsSectionForFrontendMainMenu($section->id, $level + 1),
+                'options' => ['data-level' => $level],
+            ];
+        }
+
+        return $items;
+    }
+
     public static function getItemsSectionForMenuRedactor($parent_id = null, $level = 1)
     {
         $items = [];
