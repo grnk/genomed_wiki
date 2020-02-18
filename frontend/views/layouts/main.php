@@ -27,45 +27,48 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+
+        <div class="row" style="border: 2px solid black;">
+            <div class="col-md-12">
+                static header
+
+            </div>
+        </div>
+
+        <div class="row" style="border: 2px solid black;">
+            <div class="col-md-12">
+                menu
+            </div>
+        </div>
+
+        <div class="row" style="border: 2px solid black;">
+            <div class="col-md-12">
+                Breadcrumbs Alert
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <?= Alert::widget() ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3" style="border: 2px solid black;">
+                left block menu
+                r1 <br>
+                r2 <br>
+                r3 <br>
+                r4 <br>
+                r5 <br>
+            </div>
+
+            <div class="col-md-9" style="border: 2px solid black;">
+                content
+                <?= $content ?>
+            </div>
+        </div>
+
+
     </div>
 </div>
 
