@@ -39,6 +39,11 @@ class FrontendLeftMenu extends NavX
     private function section()
     {
         $section = Section::findOne($this->sectionId);
+
+        if(!$section) {
+            return null;
+        }
+
         $level = $section->getLevel();
 
         if($level < 3) {
