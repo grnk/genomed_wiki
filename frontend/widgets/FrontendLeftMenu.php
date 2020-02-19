@@ -5,9 +5,10 @@ namespace frontend\widgets;
 use common\models\Section;
 use kartik\nav\NavX;
 
-class FrontendleftMenu extends NavX
+class FrontendLeftMenu extends NavX
 {
     public $sectionId;
+
     private $section;
 
     public function init()
@@ -25,8 +26,6 @@ class FrontendleftMenu extends NavX
 
         parent::run();
     }
-
-
 
     public function getItems()
     {

@@ -3,10 +3,10 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use frontend\helpers\AppHelper;
 use frontend\widgets\FrontendLeftMenu;
 use frontend\widgets\FrontendMainMenu;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use frontend\widgets\MainBlock;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
@@ -58,23 +58,14 @@ AppAsset::register($this);
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-3" style="border: 2px solid black;">
-                left block menu
-                <?php
-                echo FrontendLeftMenu::widget([
+        <?= MainBlock::widget([
+            'leftMenu' => FrontendLeftMenu::widget([
                     'options'=>['class'=>'nav nav-pills left-menu-items'],
                     'sectionId' => Yii::$app->request->get('sectionId', null),
-                ]);
-                ?>
-            </div>
-
-            <div class="col-md-9" style="border: 2px solid black;">
-                content
-                <?= $content ?>
-            </div>
-        </div>
-
+                ]),
+            'content' => $content,
+            'isMainPage' => AppHelper::isMainPage(),
+        ]) ?>
 
     </div>
 </div>
