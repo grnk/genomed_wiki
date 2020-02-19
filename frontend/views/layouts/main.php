@@ -3,7 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use frontend\widgets\FrontendleftMenu;
+use frontend\widgets\FrontendLeftMenu;
 use frontend\widgets\FrontendMainMenu;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -62,7 +62,7 @@ AppAsset::register($this);
             <div class="col-md-3" style="border: 2px solid black;">
                 left block menu
                 <?php
-                echo FrontendleftMenu::widget([
+                echo FrontendLeftMenu::widget([
                     'options'=>['class'=>'nav nav-pills left-menu-items'],
                 ]);
                 ?>
