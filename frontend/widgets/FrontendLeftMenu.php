@@ -8,6 +8,7 @@ use Yii;
 
 class FrontendleftMenu extends MainMenu
 {
+    public $sectionId;
     public function run()
     {
         FrontendLeftMenuAsset::register($this->view);
@@ -24,24 +25,25 @@ class FrontendleftMenu extends MainMenu
 
     public function getItems()
     {
-        $params = Yii::$app->request->queryParams;
-        $level = null;
-        if(isset($params['sectionId'])) {
-            $section = Section::findOne(['id' => $params['sectionId']]);
-            $level = $section->getLevel();
-        }
+        $section = $this->section();
+        $level = $section->getLevel();
 
         if($level < 3) {
-            return Section::getItemsSectionForFrontendLeftMenu($params['sectionId']);
+            return Section::getItemsSectionForFrontendLeftMenu($this->sectionId);
         }
 
         if($level === 3) {
-            $section = Section::findOne(['id' => $params['sectionId']]);
+            $section = Section::findOne(['id' => $this->sectionId]);
 
             return Section::getItemsSectionForFrontendLeftMenu($section->parent_id);
         }
 
         return [];
+    }
+
+    private function section()
+    {
+        return Section::findOne($this->sectionId);
     }
 
 }

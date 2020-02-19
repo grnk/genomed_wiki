@@ -64,6 +64,7 @@ AppAsset::register($this);
                 <?php
                 echo FrontendLeftMenu::widget([
                     'options'=>['class'=>'nav nav-pills left-menu-items'],
+                    'sectionId' => Yii::$app->request->get('sectionId', null),
                 ]);
                 ?>
             </div>
