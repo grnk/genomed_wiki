@@ -50,6 +50,11 @@ class Section extends BaseSection
         return Url::to(['article/index', 'sectionId' => $this->id]);
     }
 
+    public function getFrontendUrl()
+    {
+        return Url::to(['section/index', 'sectionId' => $this->id]);
+    }
+
     /**
      * @return array
      */
@@ -101,7 +106,7 @@ class Section extends BaseSection
             }
             $items[] = [
                 'label' => $section->title,
-                'url' => $section->getUrl(),
+                'url' => $section->getFrontendUrl(),
                 'items' => static::getItemsSectionForFrontendMainMenu($section->id, $level + 1),
                 'options' => ['data-level' => $level],
             ];
@@ -131,6 +136,16 @@ class Section extends BaseSection
         return $items;
     }
 
+    public static function getItemsSectionForFrontendLeftMenu()
+    {
+        $items = [
+            ['label' => 'Action', 'url' => '#'],
+            ['label' => 'Action', 'url' => '#'],
+            ['label' => 'Action', 'url' => '#'],
+        ];
+
+        return $items;
+    }
     /**
      * Удаляет все SectionArticle
      */
@@ -185,5 +200,19 @@ class Section extends BaseSection
         $parentSection = Section::findOne(['id' => $this->parent_id]);
 
         return $parentSection->title;
+    }
+
+    /**
+     * @param int $level
+     * @return int
+     */
+    public function getLevel($level = 1)
+    {
+        if($this->parent_id === null) {
+            return $level;
+        }
+        $parentSection = Section::findOne(['id' => $this->parent_id]);
+
+        return $parentSection->getLevel($level + 1);
     }
 }
