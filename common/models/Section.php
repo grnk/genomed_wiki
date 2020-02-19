@@ -52,7 +52,7 @@ class Section extends BaseSection
 
     public function getFrontendUrl()
     {
-        return Url::to(['section/index', 'sectionId' => $this->id]);
+        return Url::to(['section/view', 'sectionId' => $this->id]);
     }
 
     /**
@@ -136,13 +136,20 @@ class Section extends BaseSection
         return $items;
     }
 
-    public static function getItemsSectionForFrontendLeftMenu()
+    public static function getItemsSectionForFrontendLeftMenu($sectionId)
     {
-        $items = [
-            ['label' => 'Action', 'url' => '#'],
-            ['label' => 'Action', 'url' => '#'],
-            ['label' => 'Action', 'url' => '#'],
-        ];
+        $items = [];
+        $sections = Section::find()
+            ->orderBy('order')
+            ->andWhere(['parent_id' => $sectionId])
+            ->all();
+
+        foreach ($sections as $section) {
+            $items[] = [
+                'label' => $section->title,
+                'url' => $section->getFrontendUrl(),
+            ];
+        }
 
         return $items;
     }
