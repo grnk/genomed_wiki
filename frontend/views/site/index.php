@@ -2,8 +2,12 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'main';
-?>
-<div class="site-index">
+use yii\widgets\ListView;
 
-</div>
+$this->title = 'main';
+
+echo ListView::widget([
+    'dataProvider' => $dataProvider,
+    'itemView' => '_article',
+    'summary' => false,
+]);

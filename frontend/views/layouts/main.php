@@ -8,6 +8,7 @@ use frontend\widgets\FrontendLeftMenu;
 use frontend\widgets\FrontendMainMenu;
 use frontend\widgets\MainBlock;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
@@ -33,8 +34,8 @@ AppAsset::register($this);
 
         <div class="row" style="border: 2px solid black;">
             <div class="col-md-12">
+                <?= Html::a('Главная', '/') ?>
                 static header
-
             </div>
         </div>
 
