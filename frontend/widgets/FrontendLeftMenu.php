@@ -2,13 +2,23 @@
 
 namespace frontend\widgets;
 
-use common\classes\MainMenu;
 use common\models\Section;
-use Yii;
+use kartik\nav\NavX;
 
-class FrontendleftMenu extends MainMenu
+class FrontendleftMenu extends NavX
 {
     public $sectionId;
+    private $section;
+
+    public function init()
+    {
+        parent::init();
+
+        $this->section = $this->section();
+
+        $this->items = $this->getItems();
+    }
+
     public function run()
     {
         FrontendLeftMenuAsset::register($this->view);
@@ -16,34 +26,29 @@ class FrontendleftMenu extends MainMenu
         parent::run();
     }
 
-    public function init()
-    {
-        parent::init();
 
-        $this->items = $this->getItems();
-    }
 
     public function getItems()
     {
-        $section = $this->section();
-        $level = $section->getLevel();
-
-        if($level < 3) {
-            return Section::getItemsSectionForFrontendLeftMenu($this->sectionId);
+        if($this->section() === null) {
+            return [];
         }
 
-        if($level === 3) {
-            $section = Section::findOne(['id' => $this->sectionId]);
-
-            return Section::getItemsSectionForFrontendLeftMenu($section->parent_id);
-        }
-
-        return [];
+        return Section::getItemsSectionForFrontendLeftMenu($this->section->id);
     }
 
     private function section()
     {
-        return Section::findOne($this->sectionId);
+        $section = Section::findOne($this->sectionId);
+        $level = $section->getLevel();
+
+        if($level < 3) {
+            return $section;
+        } elseif ($level === 3) {
+            return $section->parent;
+        }
+
+        return null;
     }
 
 }
