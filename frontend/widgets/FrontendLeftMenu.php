@@ -30,7 +30,6 @@ class FrontendleftMenu extends MainMenu
             $section = Section::findOne(['id' => $params['sectionId']]);
             $level = $section->getLevel();
         }
-        d($level);
 
         if($level < 3) {
             return Section::getItemsSectionForFrontendLeftMenu($params['sectionId']);
