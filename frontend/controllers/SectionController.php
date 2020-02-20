@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\searches\ArticleSearch;
 use common\models\Section;
 use Yii;
 use yii\web\Controller;
@@ -15,15 +16,29 @@ class SectionController extends Controller
 
     public function actionView($sectionId)
     {
-        $model = Section::findOne(['id' => $sectionId]);
+        $searchModel = new ArticleSearch([
+            'section' => Section::findOne(['id' => $sectionId]),
+        ]);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        if($model->getLevel() === 3) {
-            return $this->render('view', [
-                'model' => $model,
-            ]);
-        }
+        return $this->render('view', [
+            'dataProvider' => $dataProvider,
+        ]);
 
-        return $this->render('index');
+//        if($model->getLevel() === 3) {
+//            return $this->render('view', [
+//                'model' => $model,
+//            ]);
+//        }
+//
+//        if($model->getLevel() === 2) {
+//            return $this->render('view', [
+//                'model' => $model,
+//                'sections' => $model->sections,
+//            ]);
+//        }
+
+//        return $this->render('index');
     }
 
 }

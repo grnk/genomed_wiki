@@ -2,12 +2,15 @@
 
 /**
  * @var $this yii\web\View
- * @var $model Section
+ * @var $dataProvider ActiveDataProvider
  */
 
-use common\models\Section;
+use yii\data\ActiveDataProvider;
+use yii\widgets\ListView;
 
-foreach ($model->getArticles()->all() as $article) {
-    echo \yii\helpers\Html::tag('div', $article->title);
-}
+echo ListView::widget([
+    'dataProvider' => $dataProvider,
+    'itemView' => '_article',
+    'summary' => false,
+]);
 
