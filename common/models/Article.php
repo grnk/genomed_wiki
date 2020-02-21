@@ -19,7 +19,7 @@ class Article extends BaseArticle
     public $upload_files;
 
     const ARTICLE_ACTIVE = 1;
-    const ARTICLE_inactive = 0;
+    const ARTICLE_INACTIVE = 0;
 
     /**
      * @inheritdoc
@@ -107,6 +107,11 @@ class Article extends BaseArticle
      */
     public function getUrlArticleImagePreview()
     {
+        if($this->preview_image === null) {
+//            d($this->preview_image);
+            return $this->getBaseUrl() . '/images/' . 'nophoto.png';
+        }
+
         return $this->getBaseUrl() . '/article-image-preview/' . $this->preview_image;
     }
 
