@@ -3,9 +3,12 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use frontend\helpers\AppHelper;
+use frontend\widgets\FrontendLeftMenu;
+use frontend\widgets\FrontendMainMenu;
+use frontend\widgets\MainBlock;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
@@ -27,45 +30,44 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+
+        <div class="row" style="border: 2px solid black;">
+            <div class="col-md-12">
+                <?= Html::a('Главная', '/') ?>
+                static header
+            </div>
+        </div>
+
+        <div class="row" style="border: 2px solid black;">
+            <div class="frontend-main-menu">
+                <?php
+                echo FrontendMainMenu::widget([
+                    'options'=>['class'=>'nav nav-pills'],
+                ]);
+                ?>
+            </div>
+        </div>
+
+        <div class="row" style="border: 2px solid black;">
+            <div class="col-md-12">
+                Breadcrumbs Alert
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <?= Alert::widget() ?>
+            </div>
+        </div>
+
+        <?= MainBlock::widget([
+            'leftMenu' => FrontendLeftMenu::widget([
+                    'options'=>['class'=>'nav nav-pills left-menu-items'],
+                    'sectionId' => Yii::$app->request->get('sectionId', null),
+                ]),
+            'content' => $content,
+            'isMainPage' => AppHelper::isMainPage(),
         ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+
     </div>
 </div>
 

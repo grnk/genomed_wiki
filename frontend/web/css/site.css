@@ -118,3 +118,12 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.card-of-article {
+    height: 150px;
+}
+
+.card-of-article-list .panel-body{
+    display: flex;
+    justify-content: space-between;
+}

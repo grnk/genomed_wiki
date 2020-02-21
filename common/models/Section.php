@@ -50,6 +50,11 @@ class Section extends BaseSection
         return Url::to(['article/index', 'sectionId' => $this->id]);
     }
 
+    public function getFrontendUrl()
+    {
+        return Url::to(['section/view', 'sectionId' => $this->id]);
+    }
+
     /**
      * @return array
      */
@@ -88,6 +93,28 @@ class Section extends BaseSection
         return $items;
     }
 
+    public static function getItemsSectionForFrontendMainMenu($parent_id = null, $level = 1)
+    {
+        $items = [];
+        $sections = Section::find()
+            ->orderBy('order')
+            ->andWhere(['parent_id' => $parent_id])
+            ->all();
+        foreach ($sections as $section) {
+            if($level > 2) {
+                break;
+            }
+            $items[] = [
+                'label' => $section->title,
+                'url' => $section->getFrontendUrl(),
+                'items' => static::getItemsSectionForFrontendMainMenu($section->id, $level + 1),
+                'options' => ['data-level' => $level],
+            ];
+        }
+
+        return $items;
+    }
+
     public static function getItemsSectionForMenuRedactor($parent_id = null, $level = 1)
     {
         $items = [];
@@ -109,6 +136,23 @@ class Section extends BaseSection
         return $items;
     }
 
+    public static function getItemsSectionForFrontendLeftMenu($sectionId)
+    {
+        $items = [];
+        $sections = Section::find()
+            ->orderBy('order')
+            ->andWhere(['parent_id' => $sectionId])
+            ->all();
+
+        foreach ($sections as $section) {
+            $items[] = [
+                'label' => $section->title,
+                'url' => $section->getFrontendUrl(),
+            ];
+        }
+
+        return $items;
+    }
     /**
      * Удаляет все SectionArticle
      */
@@ -163,5 +207,19 @@ class Section extends BaseSection
         $parentSection = Section::findOne(['id' => $this->parent_id]);
 
         return $parentSection->title;
+    }
+
+    /**
+     * @param int $level
+     * @return int
+     */
+    public function getLevel($level = 1)
+    {
+        if($this->parent_id === null) {
+            return $level;
+        }
+        $parentSection = Section::findOne(['id' => $this->parent_id]);
+
+        return $parentSection->getLevel($level + 1);
     }
 }
