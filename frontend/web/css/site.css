@@ -122,3 +122,8 @@ a.desc:after {
 .card-of-article {
     height: 150px;
 }
+
+.card-of-article-list .panel-body{
+    display: flex;
+    justify-content: space-between;
+}

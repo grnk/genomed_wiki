@@ -8,7 +8,7 @@ use yii\helpers\Url;
 ?>
 
 <div class="col-md-12">
-    <div class="panel panel-default card-of-article">
+    <div class="panel panel-default card-of-article-list">
         <div class="panel-heading">
             <h3 class="panel-title"><?= $model->title ?> </h3>
         </div>
@@ -21,7 +21,7 @@ use yii\helpers\Url;
                 <?= Html::a(Yii::t('app', 'read'), Url::to(['/article/view', 'articleId' => $model->id]))?>
             </div>
             <div>
-                <img width="30px" src="<?= $model->getUrlArticleImagePreview() ?>">
+                <img width="200px" src="<?= $model->getUrlArticleImagePreview() ?>">
             </div>
         </div>
     </div>
