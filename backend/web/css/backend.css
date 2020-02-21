@@ -23,3 +23,18 @@
 .main-menu {
     float: left;
 }
+
+/*Фиксы для правильного отображения левого сайдбара и меню*/
+.main-header {
+    max-height: initial !important;
+}
+
+.navbar.navbar-static-top {
+    display: flex;
+}
+
+.main-sidebar {
+    padding-top: 0 !important;
+    margin-top: 50px !important;
+    z-index: 9999 !important;
+}
