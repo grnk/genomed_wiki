@@ -1,0 +1,43 @@
+.main-block-wrapper {
+    background-color: #f6f6f6;
+}
+
+/* Каторчка для превью статьи */
+.article-list {
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Open Sans',Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+.article-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+
+.article-card-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: 100%;
+}
+
+.article-card-block-bottom {
+    display: flex;
+    justify-content: space-between;
+    border-top: solid 2px black;
+}
+
+.article-card-block-top-text-title {
+    font-weight: 700;
+}

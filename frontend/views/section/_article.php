@@ -7,22 +7,36 @@ use yii\helpers\Url;
 /** @var $model Article */
 ?>
 
-<div class="col-md-12">
-    <div class="panel panel-default card-of-article-list">
-        <div class="panel-heading">
-            <h3 class="panel-title"><?= $model->title ?> </h3>
-        </div>
-        <div class="panel-body">
-            <?= $model->preview_text ?>
-            <div id="date-create">
-                <?= $model->created_at ?>
+<div class="article-card">
+
+    <div class="article-card-block">
+
+        <div class="article-card-block-top">
+            <div class="article-card-block-top-text">
+                <div class="article-card-block-top-text-title">
+                    <?= $model->title ?>
+                </div>
+                <div class="article-card-block-top-text-preview">
+                    <?= $model->preview_text ?>
+                </div>
             </div>
-            <div>
+        </div>
+
+        <div class="article-card-block-bottom">
+            <div class="article-card-block-bottom-date">
+                <?= Yii::$app->formatter->asDate($model->created_at, 'php:d.m.Y') ?>
+            </div>
+            <div class="article-card-block-bottom-link">
                 <?= Html::a(Yii::t('app', 'read'), Url::to(['/article/view', 'articleId' => $model->id]))?>
             </div>
-            <div>
-                <img width="200px" src="<?= $model->getUrlArticleImagePreview() ?>">
-            </div>
         </div>
+
     </div>
+
+    <div class="article-card-image">
+        <img alt="" width="200px" src="<?= $model->getUrlArticleImagePreview() ?>">
+    </div>
+
 </div>
+
+

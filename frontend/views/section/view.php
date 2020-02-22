@@ -7,10 +7,12 @@
 
 use yii\data\ActiveDataProvider;
 use yii\widgets\ListView;
+?>
 
-echo ListView::widget([
+<div class="article-list">
+<?= ListView::widget([
     'dataProvider' => $dataProvider,
     'itemView' => '_article',
     'summary' => false,
-]);
-
+]); ?>
+</div>

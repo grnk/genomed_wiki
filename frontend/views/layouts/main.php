@@ -29,26 +29,25 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div class="container">
+    <div class="row" style="border: 2px solid black;">
+        <div class="col-md-12">
+            <?= Html::a('Главная', '/') ?>
+            static header
+        </div>
+    </div>
+    <div class="row" style="border: 2px solid black;">
+        <div class="frontend-main-menu">
+            <?php
+            echo FrontendMainMenu::widget([
+                'options'=>['class'=>'nav nav-pills'],
+            ]);
+            ?>
+        </div>
+    </div>
+</div>
+<div class="main-block-wrapper">
     <div class="container">
-
-        <div class="row" style="border: 2px solid black;">
-            <div class="col-md-12">
-                <?= Html::a('Главная', '/') ?>
-                static header
-            </div>
-        </div>
-
-        <div class="row" style="border: 2px solid black;">
-            <div class="frontend-main-menu">
-                <?php
-                echo FrontendMainMenu::widget([
-                    'options'=>['class'=>'nav nav-pills'],
-                ]);
-                ?>
-            </div>
-        </div>
-
         <div class="row" style="border: 2px solid black;">
             <div class="col-md-12">
                 Breadcrumbs Alert
@@ -58,7 +57,6 @@ AppAsset::register($this);
                 <?= Alert::widget() ?>
             </div>
         </div>
-
         <?= MainBlock::widget([
             'leftMenu' => FrontendLeftMenu::widget([
                     'options'=>['class'=>'nav nav-pills left-menu-items'],
@@ -67,7 +65,6 @@ AppAsset::register($this);
             'content' => $content,
             'isMainPage' => AppHelper::isMainPage(),
         ]) ?>
-
     </div>
 </div>
 
