@@ -28,51 +28,52 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
-<div class="container">
-    <div class="row" style="border: 2px solid black;">
-        <div class="col-md-12">
-            <?= Html::a('Главная', '/') ?>
-            static header
-        </div>
-    </div>
-    <div class="row" style="border: 2px solid black;">
-        <div class="frontend-main-menu">
-            <?php
-            echo FrontendMainMenu::widget([
-                'options'=>['class'=>'nav nav-pills'],
-            ]);
-            ?>
-        </div>
-    </div>
-</div>
-<div class="main-block-wrapper">
-    <div class="container">
-        <div class="row" style="border: 2px solid black;">
-            <div class="col-md-12">
-                Breadcrumbs Alert
-                <?= Breadcrumbs::widget([
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ]) ?>
-                <?= Alert::widget() ?>
+<div class="main-wrap">
+    <div class="menu-wrap">
+        <div class="container">
+            <div class="row" style="border: 2px solid black;">
+                <div class="col-md-12">
+                    <?= Html::a('Главная', '/') ?>
+                    static header
+                </div>
+            </div>
+            <div class="row" style="border: 2px solid black;">
+                <div class="frontend-main-menu">
+                    <?php
+                    echo FrontendMainMenu::widget([
+                        'options'=>['class'=>'nav nav-pills'],
+                    ]);
+                    ?>
+                </div>
             </div>
         </div>
-        <?= MainBlock::widget([
-            'leftMenu' => FrontendLeftMenu::widget([
-                    'options'=>['class'=>'nav nav-pills left-menu-items'],
-                    'sectionId' => Yii::$app->request->get('sectionId', null),
-                ]),
-            'content' => $content,
-            'isMainPage' => AppHelper::isMainPage(),
-        ]) ?>
+    </div>
+    <div class="main-block-wrapper">
+        <div class="container">
+            <div class="row" style="border: 2px solid black;">
+                <div class="col-md-12">
+                    Breadcrumbs Alert
+                    <?= Breadcrumbs::widget([
+                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    ]) ?>
+                    <?= Alert::widget() ?>
+                </div>
+            </div>
+            <?= MainBlock::widget([
+                'leftMenu' => FrontendLeftMenu::widget([
+                        'options'=>['class'=>'nav nav-pills left-menu-items'],
+                        'sectionId' => Yii::$app->request->get('sectionId', null),
+                    ]),
+                'content' => $content,
+                'isMainPage' => AppHelper::isMainPage(),
+            ]) ?>
+        </div>
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">genomed wiki footer</p>
     </div>
 </footer>
 
