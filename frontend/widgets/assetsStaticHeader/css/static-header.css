@@ -1,0 +1,123 @@
+.static-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.static-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.static-header-info-image {
+    flex-basis: 25%;
+}
+
+.static-header-info-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 50%;
+}
+
+.static-header-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    color: #666666;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: coresansa45regular, Arial, Tahoma, Geneva, sans-serif;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid 2px rgb(0, 159, 227);
+}
+
+.static-header-menu-item a{
+    color: #666;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.static-header-menu-item a:hover {
+    color: rgb(0, 159, 227);
+}
+
+.static-header-menu-item a:hover {
+    text-decoration: none;
+}
+
+.static-header-info-title-main {
+    color: #009fe3;
+    font-size: 37px;
+    font-family: 'Open Sans',Arial,sans-serif;
+    line-height: 1.1;
+    font-weight: 400;
+}
+
+.static-header-info-title-subtitle {
+    color: #666;
+    font-size: 22px;
+    font-family: 'Open Sans',Arial,sans-serif;
+    line-height: 1;
+    font-weight: 400;
+}
+
+.static-header-info-contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-basis: 25%;
+}
+
+.static-header-info-contacts-find {
+    position: relative;
+}
+
+.static-header-info-contacts-find i{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+
+
+.static-header-info-contacts-text {
+    color: #111;
+    font-size: 14px;
+    font-family: 'Open Sans',Arial,sans-serif;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.static-header-info-contacts-phone a{
+    color: #00a7cf;
+    font-size: 30px;
+    font-family: 'Open Sans',Arial,sans-serif;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.static-header-info-contacts-phone a:hover{
+    text-decoration: none;
+}
+
+.static-header-info-contacts-callback {
+    color: #00a7cf;
+    font-size: 18px;
+    font-family: 'Open Sans',Arial,sans-serif;
+    line-height: 1.55;
+    font-weight: 400;
+}
+
+.static-header-info-contacts-find-text input{
+    border: 1px solid #00a7cf;
+    padding-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+}

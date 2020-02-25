@@ -18,22 +18,20 @@
             </div>
             <div id="callback-form" class="static-header-info-contacts-callback">Заказать обратный звонок</div>
             <div class="static-header-info-contacts-find">
-                <div class="static-header-info-contacts-find-icon"><i class="glyphicon glyphicon-search"></i></div>
+                <i class="glyphicon glyphicon-search"></i>
                 <div class="static-header-info-contacts-find-text">
                     <form id="find-form">
-                        <label>
-                            <input placeholder="Поиск по сайту">
-                        </label>
+                        <input placeholder="Поиск по сайту">
                     </form>
                 </div>
             </div>
         </div>
     </div>
     <div class="static-header-menu">
-        <div class="static-header-menu-item">О нас</div>
-        <div class="static-header-menu-item">Медицинские офисы</div>
-        <div class="static-header-menu-item">Анализы и цены</div>
-        <div class="static-header-menu-item">Лаборатория</div>
-        <div class="static-header-menu-item">Онлайн консультант</div>
+        <div class="static-header-menu-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">О нас</a></div>
+        <div class="static-header-menu-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Медицинские офисы</a></div>
+        <div class="static-header-menu-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Анализы и цены</a></div>
+        <div class="static-header-menu-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Лаборатория</a></div>
+        <div class="static-header-menu-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Онлайн консультант</a></div>
     </div>
 </div>
