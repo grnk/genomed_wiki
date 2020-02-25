@@ -8,13 +8,13 @@
 ?>
 
 <div class="row">
-    <div class="col-md-3" style="border: 2px solid black;">
-        left block menu
-        <?= $leftMenu ?>
+    <div class="col-md-3">
+        <div class="left-block-menu">
+            <?= $leftMenu ?>
+        </div>
     </div>
 
-    <div class="col-md-9" style="border: 2px solid black;">
-        content
+    <div class="col-md-9">
         <?= $content ?>
     </div>
 </div>

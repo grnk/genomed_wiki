@@ -108,7 +108,6 @@ class Article extends BaseArticle
     public function getUrlArticleImagePreview()
     {
         if($this->preview_image === null) {
-//            d($this->preview_image);
             return $this->getBaseUrl() . '/images/' . 'nophoto.png';
         }
 
@@ -123,5 +122,17 @@ class Article extends BaseArticle
         $assetBundle = LoadedFilesAsset::register(Yii::$app->view);
 
         return $assetBundle->baseUrl;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSectionsIds() {
+        $sectionIds = [];
+        foreach ($this->getSectionArticles()->all() as $sectionArticle) {
+            $sectionIds[] = $sectionArticle->section_id;
+        }
+
+        return $sectionIds;
     }
 }

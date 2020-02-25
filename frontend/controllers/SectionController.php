@@ -23,22 +23,8 @@ class SectionController extends Controller
 
         return $this->render('view', [
             'dataProvider' => $dataProvider,
+            'sectionId' => $sectionId,
         ]);
-
-//        if($model->getLevel() === 3) {
-//            return $this->render('view', [
-//                'model' => $model,
-//            ]);
-//        }
-//
-//        if($model->getLevel() === 2) {
-//            return $this->render('view', [
-//                'model' => $model,
-//                'sections' => $model->sections,
-//            ]);
-//        }
-
-//        return $this->render('index');
     }
 
 }
