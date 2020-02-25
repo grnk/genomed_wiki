@@ -7,6 +7,7 @@ use frontend\helpers\AppHelper;
 use frontend\widgets\FrontendLeftMenu;
 use frontend\widgets\FrontendMainMenu;
 use frontend\widgets\MainBlock;
+use frontend\widgets\StaticHeader;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
@@ -33,8 +34,7 @@ AppAsset::register($this);
         <div class="container">
             <div class="row" style="border: 2px solid black;">
                 <div class="col-md-12">
-                    <?= Html::a('Главная', '/') ?>
-                    static header
+                    <?php /*echo StaticHeader::widget()*/ ?>
                 </div>
             </div>
             <div class="row" style="border: 2px solid black;">
