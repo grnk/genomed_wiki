@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /** @var $model Article */
+/** @var $sectionId string */
 ?>
 
 <div class="article-card">
@@ -27,7 +28,11 @@ use yii\helpers\Url;
                 <?= Yii::$app->formatter->asDate($model->created_at, 'php:d.m.Y') ?>
             </div>
             <div class="article-card-block-bottom-link">
-                <?= Html::a(Yii::t('app', 'read'), Url::to(['/article/view', 'articleId' => $model->id]))?>
+                <?= Html::a(Yii::t('app', 'read'), Url::to([
+                    '/article/view',
+                    'articleId' => $model->id,
+                    'sectionId' => $sectionId ? $sectionId : null,
+                ]))?>
             </div>
         </div>
 

@@ -3,8 +3,6 @@
 namespace frontend\controllers;
 
 use common\models\Article;
-use common\models\search\ArticleSearch;
-use Yii;
 use yii\web\Controller;
 
 class ArticleController extends Controller
@@ -14,12 +12,13 @@ class ArticleController extends Controller
         return $this->render('index');
     }
 
-    public function actionView($articleId)
+    public function actionView($articleId, $sectionId = null)
     {
         $model = Article::findOne([$articleId]);
 
         return $this->render('view', [
             'model' => $model,
+            'sectionId' => $sectionId ? $sectionId : null,
         ]);
     }
 }
