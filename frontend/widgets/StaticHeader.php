@@ -10,6 +10,7 @@ class StaticHeader extends  Widget
 {
     public function run()
     {
+        StaticHeaderAsset::register($this->view);
         parent::run();
 
         return $this->render('static-header');

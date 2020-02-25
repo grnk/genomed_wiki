@@ -30,6 +30,10 @@
         </div>
     </div>
     <div class="static-header-menu">
-
+        <div class="static-header-menu-item">О нас</div>
+        <div class="static-header-menu-item">Медицинские офисы</div>
+        <div class="static-header-menu-item">Анализы и цены</div>
+        <div class="static-header-menu-item">Лаборатория</div>
+        <div class="static-header-menu-item">Онлайн консультант</div>
     </div>
 </div>

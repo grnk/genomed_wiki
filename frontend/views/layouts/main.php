@@ -34,7 +34,7 @@ AppAsset::register($this);
         <div class="container">
             <div class="row" style="border: 2px solid black;">
                 <div class="col-md-12">
-                    <?php /*echo StaticHeader::widget()*/ ?>
+                    <?php echo StaticHeader::widget() ?>
                 </div>
             </div>
             <div class="row" style="border: 2px solid black;">
