@@ -32,9 +32,9 @@ AppAsset::register($this);
 <div class="main-wrap">
     <div class="menu-wrap">
         <div class="container">
-            <div class="row" style="border: 2px solid black;">
+            <div class="row">
                 <div class="col-md-12">
-                    <?php /*echo StaticHeader::widget()*/ ?>
+                    <?php echo StaticHeader::widget() ?>
                 </div>
             </div>
             <div class="row" style="border: 2px solid black;">
