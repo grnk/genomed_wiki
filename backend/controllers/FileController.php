@@ -8,6 +8,7 @@ use common\models\Article;
 use common\models\components\UploadFile;
 use DateTime;
 use Yii;
+use yii\helpers\FileHelper;
 use yii\helpers\Inflector;
 use yii\helpers\Json;
 use yii\web\Controller;
@@ -90,9 +91,17 @@ class FileController extends Controller
                 $file_content = base64_decode($array[1]);
                 if ($file_content) {
                     $file_name = $this->getUnic_file_name().'.jpg';
-                    file_put_contents(__DIR__.'/../web/files/screen/'.$file_name,$file_content, LOCK_EX );
+//                    file_put_contents(__DIR__.'/../web/files/screen/'.$file_name,$file_content, LOCK_EX );
+                    $urlManager = Yii::$app->urlManager;
+                    file_put_contents(
+                        Yii::getAlias('@backend') . '/web/files/screen/' .$file_name,
+                        $file_content,
+                        LOCK_EX
+                    );
                     $this->error = 'no';
-                    $this->msg = '/files/screen/'.$file_name;
+//                    $this->msg = '/files/screen/'.$file_name;
+//                    $this->msg = '/files/screen/'.$file_name;
+                    $this->msg = $urlManager->createAbsoluteUrl('files/screen/' .$file_name);
                 }
             }
         }
