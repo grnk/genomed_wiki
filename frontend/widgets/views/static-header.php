@@ -4,6 +4,7 @@
  * @var $logoPath string
  */
 
+use frontend\widgets\FrontendCallbackForm;
 use yii\helpers\Html;
 use yii\helpers\Url; ?>
 
@@ -21,7 +22,9 @@ use yii\helpers\Url; ?>
             <div class="static-header-info-contacts-phone">
                 <a href="tel:+78003501226" target="_blank">+7 (800) 350-12-26</a>
             </div>
-            <div id="callback-form" class="static-header-info-contacts-callback">Заказать обратный звонок</div>
+            <div id="div-callback-form">
+                <?= FrontendCallbackForm::widget() ?>
+            </div>
             <div class="static-header-info-contacts-find">
                 <i class="glyphicon glyphicon-search"></i>
                 <div class="static-header-info-contacts-find-text">

@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\search\ArticleSearchMain;
+use frontend\models\CallbackForm;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -137,6 +138,24 @@ class SiteController extends Controller
             return $this->refresh();
         } else {
             return $this->render('contact', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionCallback()
+    {
+        $model = new CallbackForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->sendEmail()) {
+                Yii::$app->session->setFlash('success', 'Спасибо за обращение, мы свяжемся с вами в ближайшее время');
+            } else {
+                Yii::$app->session->setFlash('error', 'Ошибка отправки');
+            }
+
+            return $this->refresh();
+        } else {
+            return $this->render('callback', [
                 'model' => $model,
             ]);
         }

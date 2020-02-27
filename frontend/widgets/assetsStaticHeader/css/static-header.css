@@ -112,6 +112,12 @@
     font-family: 'Open Sans',Arial,sans-serif;
     line-height: 1.55;
     font-weight: 400;
+    padding: 0;
+}
+
+.static-header-info-contacts-callback:hover, .static-header-info-contacts-callback:focus{
+    text-decoration: none;
+    color: #00a7cf;
 }
 
 .static-header-info-contacts-find-text input{
