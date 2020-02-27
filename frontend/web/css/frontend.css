@@ -72,3 +72,31 @@
     font-family: 'Open Sans',Arial,sans-serif;
     font-size: 16px;
 }
+
+/* Детальная карточка статьи */
+
+.article-detail-view {
+    background-color: #fff;
+    margin-top: 10px;
+    padding: 5px 15px 15px 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    font-size: 16px;
+}
+
+.article-detail-view-title {
+    margin-bottom: 20px;
+}
+
+.article-detail-view-title h1 {
+    font-size: 32px;
+}
+
+.article-detail-view-content {
+    margin-bottom: 20px;
+}
+
+.article-detail-view-time {
+    display: flex;
+    justify-content: flex-end;
+}

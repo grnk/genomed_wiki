@@ -108,7 +108,10 @@ class Section extends BaseSection
                 'label' => $section->title,
                 'url' => $section->getFrontendUrl(),
                 'items' => static::getItemsSectionForFrontendMainMenu($section->id, $level + 1),
-                'options' => ['data-level' => $level],
+                'options' => [
+                    'data-level' => $level,
+                    'class' => 'menu-level-' . $level,
+                ],
             ];
         }
 

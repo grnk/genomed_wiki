@@ -1,3 +1,33 @@
 ul.dropdown-menu {
     margin-top: 0;
 }
+
+.frontend-main-menu {
+    background-color: #0f0f0f;
+}
+
+.frontend-main-menu .menu-level-1 > a {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: coresansa45regular, Arial, Tahoma, Geneva, sans-serif;
+}
+
+.frontend-main-menu .menu-level-2 > a {
+    padding: 7px 15px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: coresansa45regular, Arial, Tahoma, Geneva, sans-serif;
+}
+
+.frontend-main-menu .menu-level-1 > a:hover {
+    background-color: #0f0f0f;
+}
+
+.frontend-main-menu .menu-level-2 > a:hover {
+    background-color: #fff;
+}
+
+.frontend-main-menu ul.dropdown-menu {
+    /*text-align: center;*/
+}

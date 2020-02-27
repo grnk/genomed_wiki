@@ -4,12 +4,13 @@
  * @var $logoPath string
  */
 
-?>
+use yii\helpers\Html;
+use yii\helpers\Url; ?>
 
 <div class="static-header">
     <div class="static-header-info">
         <div class="static-header-info-image">
-            <img src="<?= $logoPath ?>" alt="logo">
+            <a href="<?= Url::to(['/']) ?>"><img src="<?= $logoPath ?>" alt="logo"></a>
         </div>
         <div class="static-header-info-title">
             <div class="static-header-info-title-main">Медико-генетический центр</div>
@@ -32,10 +33,11 @@
         </div>
     </div>
     <div class="static-header-menu">
-        <div class="static-header-menu-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">О нас</a></div>
-        <div class="static-header-menu-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Медицинские офисы</a></div>
-        <div class="static-header-menu-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Анализы и цены</a></div>
-        <div class="static-header-menu-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Лаборатория</a></div>
-        <div class="static-header-menu-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Онлайн консультант</a></div>
+        <div class="static-header-menu-item"><?= Html::a('О нас', 'http://genomed.ru/#tab_70011', ['target' => '_blank', 'rel' => 'nofollow']) ?></div>
+        <div class="static-header-menu-item"><?= Html::a('Медицинские офисы', 'http://genomed.ru/#tab_70012', ['target' => '_blank', 'rel' => 'nofollow']) ?></div>
+        <div class="static-header-menu-item"><?= Html::a('Услуги', 'http://genomed.ru/#tab_70015', ['target' => '_blank', 'rel' => 'nofollow']) ?></div>
+        <div class="static-header-menu-item"><?= Html::a('Анализы и цены', 'http://price.genomed.ru/', ['target' => '_blank', 'rel' => 'nofollow']) ?></div>
+        <div class="static-header-menu-item"><?= Html::a('Лаборатория', 'http://genomed.ru/#tab_70013', ['target' => '_blank', 'rel' => 'nofollow']) ?></div>
+        <div class="static-header-menu-item"><?= Html::a('Онлайн консультант', 'http://genomed.ru/#tab_70014', ['target' => '_blank', 'rel' => 'nofollow']) ?></div>
     </div>
 </div>
