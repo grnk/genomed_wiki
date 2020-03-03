@@ -66,6 +66,7 @@ return [
             'access' => ['@'],
             'root' => [
 //                    'baseUrl'=>(file_exists("C:\\OSPanel")) ?  HTTP."://task.genomed.local" : HTTP."://task.genomed.ru",
+		'baseUrl'=>'http://admin.wiki.genomed.ru',
                 'basePath'=>'@backend/web',
                 'path' => 'files',
                 'name' => 'Хранилище изображений',
