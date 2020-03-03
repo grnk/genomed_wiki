@@ -20,6 +20,10 @@ ul.dropdown-menu {
     font-family: coresansa45regular, Arial, Tahoma, Geneva, sans-serif;
 }
 
+.frontend-main-menu .nav > li > a:hover, .nav > li > a:focus {
+    background-color: #0f0f0f;
+}
+
 .frontend-main-menu .nav .menu-level-1.open > a
 {
     background-color: #0f0f0f;
