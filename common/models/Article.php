@@ -107,7 +107,7 @@ class Article extends BaseArticle
      */
     public function getUrlArticleImagePreview()
     {
-        if($this->preview_image === null) {
+        if(empty($this->preview_image)) {
             return $this->getBaseUrl() . '/images/' . 'nophoto.png';
         }
 
