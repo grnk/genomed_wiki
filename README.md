@@ -58,3 +58,18 @@ frontend
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
+
+Для работы консольного приложения для замены url для картинок в файл console/config/params-local.php
+
+```
+<?php
+return [
+    /* Параметры для консольного редактора ссылок для изображений ./yii edit-picture */
+    'protocolFrontend' => 'http',
+    'hostOldFrontend' => 'f.wiki.genomed.loc',
+    'hostFrontend' => 'f.wiki.genomed.loc',
+    'protocolBackend' => 'http',
+    'hostOldBackend' => 'bbb.wiki.genomed.loc',
+    'hostBackend' => 'b.wiki.genomed.loc',
+];
+```
