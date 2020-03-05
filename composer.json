@@ -25,7 +25,8 @@
         "2amigos/yii2-ckeditor-widget": "^2.2",
         "mihaildev/yii2-elfinder": "*",
         "mihaildev/yii2-ckeditor": "*",
-        "kartik-v/yii2-widget-fileinput": "dev-master"
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "philippfrenzel/yii2masonry": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

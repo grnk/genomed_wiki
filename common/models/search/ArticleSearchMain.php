@@ -41,7 +41,7 @@ use common\models\Article;
      */
     public function search($params)
     {
-        $query = Article::find()->orderBy('created_at DESC')->limit(12);
+        $query = Article::find()->orderBy('updated_at DESC')->limit(12);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
